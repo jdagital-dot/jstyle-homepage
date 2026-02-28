@@ -1,0 +1,475 @@
+:root {
+    /* Colors - Night Sakura Theme */
+    --primary-navy: #0a1128;
+    --secondary-navy: #1c2541;
+    --accent-pink: #ffafcc;
+    --accent-pink-glow: #ffc8dd;
+    --text-white: #ffffff;
+    --text-gray: #b0b0b0;
+    --bg-dark: #050510;
+
+    /* Fonts */
+    --font-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+    /* Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--bg-dark);
+    color: var(--text-white);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Base UI Elements */
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition-smooth);
+}
+
+ul {
+    list-style: none;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-padding {
+    padding: 80px 0;
+}
+
+h1,
+h2,
+h3 {
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 12px 32px;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    border: none;
+}
+
+.btn-primary {
+    background-color: var(--accent-pink);
+    color: var(--primary-navy);
+}
+
+.btn-primary:hover {
+    background-color: var(--accent-pink-glow);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(255, 175, 204, 0.3);
+}
+
+.btn-outline {
+    background: transparent;
+    border: 2px solid var(--accent-pink);
+    color: var(--accent-pink);
+}
+
+.btn-outline:hover {
+    background: var(--accent-pink);
+    color: var(--primary-navy);
+}
+
+/* Header */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 0;
+    z-index: 1000;
+    background: rgba(5, 5, 16, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 175, 204, 0.1);
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--accent-pink);
+    text-shadow: 0 0 10px rgba(255, 175, 204, 0.5);
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a:hover {
+    color: var(--accent-pink);
+}
+
+#opening-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-dark);
+    z-index: 2000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+    transition: opacity 1s ease-out;
+}
+
+#opening-canvas {
+    width: 100%;
+    height: 100%;
+}
+
+/* Branding Overlay Content (Black BG Phase) */
+.branding-overlay-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 1s ease;
+    z-index: 2100;
+}
+
+.branding-overlay-content.visible {
+    opacity: 1;
+}
+
+.opening-logo {
+    font-size: clamp(4rem, 18vw, 10rem);
+    line-height: 1;
+    margin-bottom: 20px;
+    background: linear-gradient(to right, #fff, var(--accent-pink));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+    display: inline-block;
+}
+
+.opening-logo .underline {
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 0;
+    height: 8px;
+    background: var(--accent-pink);
+    border-radius: 4px;
+    transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: 0.5s;
+}
+
+.branding-overlay-content.visible .underline {
+    width: 100%;
+}
+
+.opening-subtitle {
+    font-size: 1.5rem;
+    color: var(--accent-pink);
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    font-weight: 600;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 1s ease;
+    transition-delay: 1.5s;
+}
+
+.branding-overlay-content.visible .opening-subtitle {
+    opacity: 0.8;
+    transform: translateY(0);
+}
+
+/* Hero Section Base (Original style restoration) */
+.hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    background-image: url('assets/hero.png');
+    background-size: cover;
+    background-position: center;
+    padding-top: 80px;
+    overflow: hidden;
+}
+
+#sakura-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg,
+            rgba(10, 17, 40, 0.9) 0%,
+            rgba(10, 17, 40, 0.6) 50%,
+            rgba(255, 175, 204, 0.2) 100%);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    opacity: 0;
+}
+
+.hero-content.loaded {
+    opacity: 1;
+}
+
+.hero h1 {
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    line-height: 1.1;
+    margin-bottom: 24px;
+    background: linear-gradient(to right, #fff, var(--accent-pink));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+    font-size: 1.25rem;
+    color: var(--text-gray);
+    margin-bottom: 40px;
+    max-width: 600px;
+}
+
+.hero-btns {
+    display: flex;
+    gap: 20px;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    margin-bottom: 48px;
+    text-align: center;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 4px;
+    background: var(--accent-pink);
+    margin: 16px auto 0;
+    border-radius: 2px;
+}
+
+.bg-secondary {
+    background-color: var(--secondary-navy);
+}
+
+/* Schedule Section */
+.schedule-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+.schedule-card {
+    background: rgba(10, 17, 40, 0.5);
+    padding: 30px;
+    border-radius: 15px;
+}
+
+.schedule-list li {
+    margin-bottom: 12px;
+    font-size: 1.1rem;
+}
+
+.schedule-list .note {
+    font-size: 0.9rem;
+    color: var(--text-gray);
+    margin-top: 20px;
+}
+
+.map-placeholder {
+    width: 100%;
+    height: 200px;
+    background: var(--secondary-navy);
+    margin-top: 20px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px dashed var(--accent-pink);
+}
+
+/* Fees Section */
+.fees-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.fee-item {
+    background: var(--secondary-navy);
+    padding: 40px 20px;
+    text-align: center;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 175, 204, 0.1);
+}
+
+.fee-item.highlight {
+    border: 2px solid var(--accent-pink);
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(255, 175, 204, 0.2);
+}
+
+.fee-item .price {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--accent-pink);
+    margin-top: 20px;
+}
+
+.fee-item .price span {
+    font-size: 1rem;
+    color: var(--text-gray);
+}
+
+/* Contact Section */
+.contact-container {
+    max-width: 800px;
+}
+
+.contact-intro {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 1.1rem;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 40px;
+}
+
+.contact-info h3 {
+    margin-bottom: 20px;
+}
+
+.contact-info p {
+    margin-bottom: 15px;
+}
+
+.contact-form {
+    display: grid;
+    gap: 15px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 15px;
+    background: var(--primary-navy);
+    border: 1px solid rgba(255, 175, 204, 0.2);
+    border-radius: 10px;
+    color: #fff;
+}
+
+/* Footer */
+footer {
+    padding: 40px 0;
+    text-align: center;
+    border-top: 1px solid rgba(255, 175, 204, 0.1);
+    color: var(--text-gray);
+    font-size: 0.9rem;
+}
+
+/* Intersection Observer Reveal */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1s ease-out;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* About Section */
+.about-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.about-card {
+    background: rgba(28, 37, 65, 0.5);
+    padding: 40px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 175, 204, 0.1);
+    perspective: 1000px;
+    transition: transform 0.5s ease;
+}
+
+.about-card:hover {
+    transform: translateY(-10px) rotateX(5deg) rotateY(2deg);
+}
+
+.about-card h3 {
+    color: var(--accent-pink);
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+
+    .hero h1 {
+        font-size: 3rem;
+    }
+
+    .schedule-grid,
+    .fees-grid,
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .fee-item.highlight {
+        transform: none;
+    }
+}

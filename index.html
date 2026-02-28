@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>J.STYLE | 上越市の卓球ジュニアチーム</title>
+    <meta name="description"
+        content="新潟県上越市の卓球ジュニアチームJ.STYLE（ジェイスタイル）公式サイト。年中児から中学生まで、「卓球で人生を豊かに」を合言葉に、全国入賞を目指して活動しています。">
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Opening Animation Overlay -->
+    <div id="opening-overlay">
+        <canvas id="opening-canvas"></canvas>
+        <div class="branding-overlay-content">
+            <h1 class="opening-logo">J.STYLE<span class="underline"></span></h1>
+            <p class="opening-subtitle">Junior Table Tennis Team</p>
+        </div>
+    </div>
+
+    <header>
+        <nav class="container">
+            <div class="logo">J.STYLE</div>
+            <ul class="nav-links">
+                <li><a href="#about">チーム紹介</a></li>
+                <li><a href="#schedule">スケジュール</a></li>
+                <li><a href="#fees">料金案内</a></li>
+                <li><a href="#contact">お問い合わせ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <canvas id="sakura-canvas"></canvas>
+            <div class="hero-content container">
+                <h1 class="animate-fade-in">卓球で人生を豊かに。</h1>
+                <p class="animate-fade-in" style="animation-delay: 0.2s;">
+                    上越市から全国へ。楽しさと強さを両立するジュニア卓球チーム「J.STYLE」。</p>
+                <div class="hero-btns animate-fade-in" style="animation-delay: 0.4s;">
+                    <a href="#contact" class="btn btn-primary">無料体験に申し込む</a>
+                    <a href="#about" class="btn btn-outline">詳しく見る</a>
+                </div>
+            </div>
+            <div class="hero-overlay"></div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section-padding container reveal">
+            <h2 class="section-title">J.STYLEについて</h2>
+            <div class="about-grid">
+                <div class="about-card reveal">
+                    <h3>活動理念</h3>
+                    <p>「楽しさ」「人間形成」「仲間づくり」を大切にし、競技としての強さだけでなく、社会に通じる豊かな心を育てます。</p>
+                </div>
+                <div class="about-card reveal">
+                    <h3>目標</h3>
+                    <p>全国大会での上位入賞を目指し、高い志を持って日々の練習に励んでいます。初心者から上り詰める喜びを共に味わいましょう。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Schedule Section -->
+        <section id="schedule" class="section-padding bg-secondary reveal">
+            <div class="container">
+                <h2 class="section-title">練習スケジュール・場所</h2>
+                <div class="schedule-grid">
+                    <div class="schedule-card reveal">
+                        <h3>練習時間</h3>
+                        <ul class="schedule-list">
+                            <li><strong>月・水・金</strong> 19:00 - 21:00</li>
+                            <li><strong>土曜日</strong> 9:00 - 12:00</li>
+                            <li class="note">※上級者コースは日曜日も練習がある場合があります。</li>
+                        </ul>
+                    </div>
+                    <div class="schedule-card">
+                        <h3>場所</h3>
+                        <p>上越市総合体育館</p>
+                        <p class="address">新潟県上越市下門前1666</p>
+                        <!-- 地図のプレースホルダー -->
+                        <div class="map-placeholder">
+                            <p>Map View</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Fees Section -->
+        <section id="fees" class="section-padding container">
+            <h2 class="section-title">料金案内</h2>
+            <div class="fees-grid">
+                <div class="fee-item">
+                    <h3>年会費</h3>
+                    <p class="price">10,000<span>円</span></p>
+                </div>
+                <div class="fee-item highlight">
+                    <h3>初級・中級者コース</h3>
+                    <p class="price">4,000<span>円 / 月</span></p>
+                </div>
+                <div class="fee-item">
+                    <h3>上級者コース</h3>
+                    <p class="price">10,000<span>円 / 月</span></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section-padding bg-secondary">
+            <div class="container contact-container">
+                <h2 class="section-title">お問い合わせ・体験予約</h2>
+                <p class="contact-intro">1週間の無料体験を随時受け付けております。お気軽にご連絡ください！</p>
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <h3>連絡先</h3>
+                        <p>📞 070-2837-6716</p>
+                        <p>✉️ j.style2024tt.team@gmail.com</p>
+                        <p>📸 <a href="https://www.instagram.com/j.style_tt_team" target="_blank">@j.style_tt_team</a>
+                        </p>
+                    </div>
+                    <form class="contact-form">
+                        <input type="text" placeholder="お名前" required>
+                        <input type="email" placeholder="メールアドレス" required>
+                        <textarea placeholder="お問い合わせ内容・体験希望日など" rows="5" required></textarea>
+                        <button type="submit" class="btn btn-primary">送信する</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 J.STYLE Junior Table Tennis Team. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
