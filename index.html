@@ -5,47 +5,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>J.STYLE | 上越市の卓球ジュニアチーム</title>
-    <!-- Google Analytics (GA4) -->
-    <!-- 下記の 'G-XXXXXXXXXX' を、取得した測定IDに置き換えてください -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'G-XXXXXXXXXX');
-    </script>
-    <meta name="description"
-        content="新潟県上越市の卓球ジュニアチームJ.STYLE（ジェイスタイル）公式サイト。年中児から中学生まで、「卓球で人生を豊かに」を合言葉に、全国入賞を目指して活動しています。">
-
-    <!-- Open Graph / Facebook / SNS -->
+    <!-- SEO & Metadata -->
+    <meta name="description" content="新潟県上越市の卓球ジュニアチーム J.STYLE。未来のトップアスリート育成を目指し、初心者から上級者まで情熱的に指導。体験レッスン受付中。">
+    <link rel="canonical" href="https://jstyle-tt.jp/">
+    <!-- OGP -->
+    <meta property="og:title" content="J.STYLE | 上越市の卓球ジュニアチーム">
+    <meta property="og:description" content="未来のトップアスリートを、ここ上越から。J.STYLE。">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://jstyle-tt.jp/">
-    <meta property="og:title" content="J.STYLE | 上越市の卓球ジュニアチーム">
-    <meta property="og:description"
-        content="新潟県上越市の卓球ジュニアチームJ.STYLE（ジェイスタイル）公式サイト。「卓球で人生を豊かに」を合言葉に、年中児から中学生まで全国入賞を目指して活動中。">
-    <meta property="og:image" content="https://jstyle-tt.jp/og-image.jpg">
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://jstyle-tt.jp/">
-    <meta property="twitter:title" content="J.STYLE | 上越市の卓球ジュニアチーム">
-    <meta property="twitter:description"
-        content="新潟県上越市の卓球ジュニアチームJ.STYLE（ジェイスタイル）公式サイト。「卓球で人生を豊かに」を合言葉に、年中児から中学生まで全国入賞を目指して活動中。">
-    <meta property="twitter:image" content="https://jstyle-tt.jp/og-image.jpg">
-
-    <!-- Google Search Console Verification -->
-    <meta name="google-site-verification" content="_sOCo0utBFgx2yLf6jk7U0UPnTRcveYU8dDIYkGPjuo" />
-
-    <!-- Canonical -->
-    <link rel="canonical" href="https://jstyle-tt.jp/">
-
-    <!-- Structured Data (JSON-LD) -->
+    <!-- Styles & Fonts -->
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Noto+Sans+JP:wght@400;700;900&display=swap"
+        rel="stylesheet">
+    <!-- JSON-LD -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "SportsTeam",
+      "@type": "SportsOrganization",
       "name": "J.STYLE",
-      "description": "新潟県上越市の卓球ジュニアチーム。年中児から中学生まで全国入賞を目指して活動しています。",
       "url": "https://jstyle-tt.jp/",
       "address": {
         "@type": "PostalAddress",
@@ -54,150 +32,193 @@
         "addressRegion": "新潟県",
         "streetAddress": "木田1丁目17-33",
         "addressCountry": "JP"
-      },
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": "+81-70-2837-6716",
-        "contactType": "customer service"
       }
     }
     </script>
-
-    <link rel="stylesheet" href="style.css">
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body class="loading">
     <!-- Opening Animation Overlay -->
     <div id="opening-overlay">
         <canvas id="opening-canvas"></canvas>
         <div class="branding-overlay-content">
             <h1 class="opening-logo">J.STYLE<span class="underline"></span></h1>
-            <p class="opening-subtitle">Junior Table Tennis Team</p>
+            <p class="opening-subtitle">Future of Table Tennis</p>
         </div>
     </div>
 
-    <header>
-        <nav class="container">
-            <div class="logo">J.STYLE</div>
-            <ul class="nav-links">
-                <li><a href="#about">チーム紹介</a></li>
-                <li><a href="#schedule">スケジュール</a></li>
-                <li><a href="#fees">料金案内</a></li>
-                <li><a href="#contact">お問い合わせ</a></li>
-            </ul>
-        </nav>
+    <header class="main-header">
+        <div class="header-inner">
+            <h1 class="logo">J.STYLE</h1>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#news">NEWS</a></li>
+                    <li><a href="#about">ABOUT</a></li>
+                    <li><a href="#courses">COURSES</a></li>
+                    <li><a href="#players">PLAYERS</a></li>
+                    <li><a href="#access">ACCESS</a></li>
+                </ul>
+            </nav>
+            <a href="#access" class="cta-button-small">体験申込</a>
+        </div>
     </header>
 
     <main>
         <!-- Hero Section -->
-        <section class="hero">
+        <section class="hero-premium">
             <canvas id="sakura-canvas"></canvas>
-            <div class="hero-content container">
-                <h1 class="animate-fade-in">卓球で人生を豊かに。</h1>
-                <p class="animate-fade-in" style="animation-delay: 0.2s;">
-                    上越市から全国へ。楽しさと強さを両立するジュニア卓球チーム「J.STYLE」。</p>
-                <div class="hero-btns animate-fade-in" style="animation-delay: 0.4s;">
-                    <a href="#contact" class="btn btn-primary">無料体験に申し込む</a>
-                    <a href="#about" class="btn btn-outline">詳しく見る</a>
+            <div class="hero-content">
+                <span class="sub-lead reveal">FUTURE OF TABLE TENNIS</span>
+                <h2 class="main-lead reveal">未来のアスリートを、<br><span class="highlight">ここ上越から。</span></h2>
+                <p class="description reveal">J.STYLEは、国際舞台で活躍できる選手の育成と、卓球を通じた人間形成を目指すジュニアチームです。</p>
+                <div class="hero-actions reveal">
+                    <a href="#courses" class="btn btn-primary">コース紹介を見る</a>
+                    <a href="#access" class="btn btn-outline">お問い合わせ</a>
                 </div>
             </div>
-            <div class="hero-overlay"></div>
+            <div class="hero-scroll">SCROLL</div>
         </section>
 
-        <!-- About Section -->
-        <section id="about" class="section-padding container reveal">
-            <h2 class="section-title">J.STYLEについて</h2>
-            <div class="about-grid">
-                <div class="about-card reveal">
-                    <h3>活動理念</h3>
-                    <p>「楽しさ」「人間形成」「仲間づくり」を大切にし、競技としての強さだけでなく、社会に通じる豊かな心を育てます。</p>
+        <!-- News Section -->
+        <section id="news" class="news-section">
+            <div class="section-header container">
+                <h2 class="section-title">NEWS</h2>
+                <a href="#" class="view-all">一覧を見る</a>
+            </div>
+            <div class="news-grid container">
+                <article class="news-card reveal">
+                    <span class="news-date">2026.03.01</span>
+                    <span class="news-tag">大会結果</span>
+                    <h3 class="news-title">全日本選手権ジュニアの部 出場決定</h3>
+                </article>
+                <article class="news-card reveal">
+                    <span class="news-date">2026.02.20</span>
+                    <span class="news-tag">お知らせ</span>
+                    <h3 class="news-title">春季短期集中レッスンの受付を開始しました</h3>
+                </article>
+                <article class="news-card reveal">
+                    <span class="news-date">2026.02.15</span>
+                    <span class="news-tag">レポート</span>
+                    <h3 class="news-title">特別講師による技術指導会を実施しました</h3>
+                </article>
+            </div>
+        </section>
+
+        <!-- About/Philosophy -->
+        <section id="about" class="about-section dark-bg">
+            <div class="container grid-2">
+                <div class="about-text">
+                    <h2 class="reveal">未来を拓く、<br>情熱と技術。</h2>
+                    <p class="reveal">
+                        J.STYLE卓球アカデミーは、2021年に創設されました。私たちは単なるスキル向上だけでなく、「自ら考える力」「逆境を乗り越える競争力」「尊重し合う心」をキーワードに、世界に通用するトップアスリートの育成に挑んでいます。
+                    </p>
                 </div>
-                <div class="about-card reveal">
-                    <h3>目標</h3>
-                    <p>全国大会での上位入賞を目指し、高い志を持って日々の練習に励んでいます。初心者から上り詰める喜びを共に味わいましょう。</p>
+                <div class="about-image reveal">
+                    <div class="image-box premium-border"></div>
                 </div>
             </div>
         </section>
 
-        <!-- Schedule Section -->
-        <section id="schedule" class="section-padding bg-secondary reveal">
+        <!-- Courses -->
+        <section id="courses" class="courses-section">
             <div class="container">
-                <h2 class="section-title">練習スケジュール・場所</h2>
-                <div class="schedule-grid">
-                    <div class="schedule-card reveal">
-                        <h3>練習時間</h3>
-                        <ul class="schedule-list">
-                            <li><strong>月・水・金</strong> 19:00 - 21:00</li>
-                            <li><strong>土曜日</strong> 9:00 - 12:00</li>
-                            <li class="note">※上級者コースは日曜日も練習がある場合があります。</li>
-                        </ul>
+                <h2 class="section-title text-center">COURSES</h2>
+                <div class="course-grid">
+                    <div class="course-card reveal">
+                        <div class="course-img">
+                            <img src="/Users/miyamotosoushi/.gemini/antigravity/brain/02dc0f02-ec95-4d2d-bf39-6431906d1ecb/jstyle_top_athlete_course_premium_1772461305271.png"
+                                alt="トップアスリートコース">
+                        </div>
+                        <div class="course-info">
+                            <h3>トップアスリートコース</h3>
+                            <p>国際舞台での活躍を目指す選抜コース。高度な戦術指導とフィジカルトレーニングを並行し、プロの卵を育成します。</p>
+                        </div>
                     </div>
-                    <div class="schedule-card reveal">
-                        <h3>場所</h3>
-                        <p>上越市総合体育館</p>
-                        <p class="address">新潟県上越市木田1丁目17-33</p>
-                        <div class="map-container">
-                            <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3184.281352485502!2d138.2512687118318!3d37.14606774781442!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5ff5b5ce72800001%3A0x6a0f69a5a3a79d38!2z5LiK6iK5biC57eP5ZCI5L2T6IKy6aSo!5e0!3m2!1sja!2sjp!4v1740840240000!5m2!1sja!2sjp"
-                                width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
-                                referrerpolicy="no-referrer-when-downgrade">
-                            </iframe>
+                    <div class="course-card reveal">
+                        <div class="course-img">
+                            <img src="/Users/miyamotosoushi/.gemini/antigravity/brain/02dc0f02-ec95-4d2d-bf39-6431906d1ecb/jstyle_junior_course_premium_1772461275454.png"
+                                alt="ジュニアコース">
+                        </div>
+                        <div class="course-info">
+                            <h3>ジュニアコース</h3>
+                            <p>年中〜小学6年生対象。卓球の楽しさを知り、夢を持つきっかけを作ります。未経験者も大歓迎です。</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Fees Section -->
-        <section id="fees" class="section-padding container">
-            <h2 class="section-title">料金案内</h2>
-            <div class="fees-grid">
-                <div class="fee-item">
-                    <h3>年会費</h3>
-                    <p class="price">10,000<span>円</span></p>
-                </div>
-                <div class="fee-item highlight">
-                    <h3>初級・中級者コース</h3>
-                    <p class="price">4,000<span>円 / 月</span></p>
-                </div>
-                <div class="fee-item">
-                    <h3>上級者コース</h3>
-                    <p class="price">10,000<span>円 / 月</span></p>
+        <!-- Players & Staff -->
+        <section id="players" class="staff-section dark-bg">
+            <div class="container">
+                <h2 class="section-title text-center">PLAYERS & STAFF</h2>
+                <div class="avatar-grid">
+                    <div class="staff-card reveal">
+                        <img src="/Users/miyamotosoushi/.gemini/antigravity/brain/02dc0f02-ec95-4d2d-bf39-6431906d1ecb/jstyle_staff_avatar_placeholder_1772461329972.png"
+                            alt="代表コーチ">
+                        <h4>代表コーチ</h4>
+                        <p>JOC公認コーチ</p>
+                    </div>
+                    <div class="staff-card reveal">
+                        <div class="placeholder-avatar">M.K</div>
+                        <h4>所属選手 A</h4>
+                        <p>全国大会入賞</p>
+                    </div>
+                    <div class="staff-card reveal">
+                        <div class="placeholder-avatar">S.T</div>
+                        <h4>所属選手 B</h4>
+                        <p>県代表</p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Contact Section -->
-        <section id="contact" class="section-padding bg-secondary">
-            <div class="container contact-container">
-                <h2 class="section-title">お問い合わせ・体験予約</h2>
-                <p class="contact-intro">1週間の無料体験を随時受け付けております。お気軽にご連絡ください！</p>
-                <div class="contact-grid">
-                    <div class="contact-info">
-                        <h3>連絡先</h3>
+        <!-- Access / Facility -->
+        <section id="access" class="access-section">
+            <div class="container grid-2">
+                <div class="access-info">
+                    <h2 class="section-title">ACCESS</h2>
+                    <div class="facility-card reveal">
+                        <h3>上越市総合体育館</h3>
+                        <p>〒943-0805 新潟県上越市木田1丁目17-33</p>
+                        <div class="schedule-mini">
+                            <p>【練習日】 月・水・金 (18:00 - 21:00)</p>
+                            <p>【週末】 大会・遠征・特別練習</p>
+                        </div>
+                        <a href="https://goo.gl/maps/UHYvVbX3GXE5oXox8" class="btn btn-outline"
+                            target="_blank">Googleマップで開く</a>
+                    </div>
+                    <div class="contact-mini reveal">
                         <p>📞 070-2837-6716</p>
                         <p>✉️ j.style2024tt.team@gmail.com</p>
-                        <p>📸 <a href="https://www.instagram.com/j.style_tt_team" target="_blank">@j.style_tt_team</a>
-                        </p>
                     </div>
-                    <form class="contact-form">
-                        <input type="text" placeholder="お名前" required>
-                        <input type="email" placeholder="メールアドレス" required>
-                        <textarea placeholder="お問い合わせ内容・体験希望日など" rows="5" required></textarea>
-                        <button type="submit" class="btn btn-primary">送信する</button>
-                    </form>
+                </div>
+                <div class="map-container reveal">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3166.456637380922!2d138.2514163!3d37.1418728!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5ff5b26396e9527f%3A0xe94139e801264c67!2z5LiK6LaK5biC57eP5ZCI5L2T6IKy6aSo!5e0!3m2!1sja!2sjp!4v1710000000000!5m2!1sja!2sjp"
+                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer>
+    <footer class="main-footer">
         <div class="container">
-            <p>&copy; 2026 J.STYLE Junior Table Tennis Team. All Rights Reserved.</p>
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h2 class="logo">J.STYLE</h2>
+                    <p>Future of Table Tennis</p>
+                </div>
+                <div class="footer-links">
+                    <ul>
+                        <li><a href="#about">団体概要</a></li>
+                        <li><a href="#">プライバシーポリシー</a></li>
+                        <li><a href="#">お問い合わせ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <p class="copyright">© 2026 J.STYLE. All rights reserved.</p>
         </div>
     </footer>
 
