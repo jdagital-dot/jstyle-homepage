@@ -232,13 +232,73 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Header transparency on scroll
-    const header = document.querySelector('.main-header');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            header.style.background = 'rgba(5, 5, 16, 0.95)';
-        } else {
-            header.style.background = 'rgba(5, 5, 16, 0.8)';
+    // --- microCMS Integration ---
+    // ここを microCMS の管理画面 URL の「xxxxx.microcms.io」の xxxxx の部分に書き換えてください
+    const MICROCMS_SERVICE_DOMAIN = 'j-style-news'; // ← ここを実際のサービス名に変更
+    const MICROCMS_API_KEY = 'nuAX2PFCPxRVLB5iRw37iYoQQ5ugY6ncWLHZ'; // 設定済みのAPIキー
+    const newsContainer = document.getElementById('news-container');
+
+    async function fetchNews() {
+        if (!newsContainer) return;
+
+        // API設定がまだの場合はダミーデータを表示
+        if (MICROCMS_SERVICE_DOMAIN === 'YOUR_SERVICE_DOMAIN') {
+            renderDummyNews();
+            return;
         }
-    });
+
+        try {
+            const response = await fetch(
+                `https://${MICROCMS_SERVICE_DOMAIN}.microcms.io/api/v1/news?limit=3`,
+                {
+                    headers: {
+                        'X-MICROCMS-API-KEY': MICROCMS_API_KEY
+                    }
+                }
+            );
+            const data = await response.json();
+            renderNews(data.contents);
+        } catch (error) {
+            console.error('ニュースの取得に失敗しました:', error);
+            newsContainer.innerHTML = '<p style="color:red; grid-column:1/-1; text-align:center;">ニュースの読み込みに失敗しました。</p>';
+        }
+    }
+
+    function renderNews(contents) {
+        if (!newsContainer) return;
+        newsContainer.innerHTML = '';
+
+        contents.forEach(content => {
+            const date = new Date(content.publishedAt || content.createdAt);
+            const formattedDate = `${date.getFullYear()}.${(date.getMonth() + 1).toString().padStart(2, '0')}.${date.getDate().toString().padStart(2, '0')}`;
+
+            const card = document.createElement('article');
+            card.className = 'news-card reveal';
+            card.style.cursor = 'pointer';
+
+            // 画像がある場合のみ表示
+            const imageHtml = content.image
+                ? `<div class="news-image"><img src="${content.image.url}" alt="${content.title}"></div>`
+                : '';
+
+            card.innerHTML = `
+                ${imageHtml}
+                <div class="news-content">
+                    <span class="news-date">${formattedDate}</span>
+                    <span class="news-tag">${content.category || 'お知らせ'}</span>
+                    <h3 class="news-title">${content.title}</h3>
+                </div>
+            `;
+
+            card.addEventListener('click', () => {
+                // ポップアップではなく詳細ページへ遷移（IDを渡す）
+                window.location.href = `news-detail.html?id=${content.id}`;
+            });
+
+            newsContainer.appendChild(card);
+            observer.observe(card);
+        });
+    }
+
+    fetchNews();
 });

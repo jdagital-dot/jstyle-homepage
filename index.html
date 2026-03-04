@@ -55,7 +55,7 @@
                     <li><a href="#news">NEWS</a></li>
                     <li><a href="#about">ABOUT</a></li>
                     <li><a href="#courses">COURSES</a></li>
-                    <li><a href="#players">PLAYERS</a></li>
+                    <li><a href="#staff">STAFF</a></li>
                     <li><a href="#access">ACCESS</a></li>
                 </ul>
             </nav>
@@ -69,8 +69,8 @@
             <canvas id="sakura-canvas"></canvas>
             <div class="hero-content">
                 <span class="sub-lead reveal">FUTURE OF TABLE TENNIS</span>
-                <h2 class="main-lead reveal">未来のアスリートを、<br><span class="highlight">ここ上越から。</span></h2>
-                <p class="description reveal">J.STYLEは、国際舞台で活躍できる選手の育成と、卓球を通じた人間形成を目指すジュニアチームです。</p>
+                <h2 class="main-lead reveal">未来のアスリートを<br><span class="highlight">ここ上越から。</span></h2>
+                <p class="description reveal">J.STYLEは、全国大会などで活躍できる選手の育成と、卓球を通じた人間形成を目指すジュニアチームです。</p>
                 <div class="hero-actions reveal">
                     <a href="#courses" class="btn btn-primary">コース紹介を見る</a>
                     <a href="#access" class="btn btn-outline">お問い合わせ</a>
@@ -83,24 +83,12 @@
         <section id="news" class="news-section">
             <div class="section-header container">
                 <h2 class="section-title">NEWS</h2>
-                <a href="#" class="view-all">一覧を見る</a>
+                <a href="news-list.html" class="view-all">一覧を見る</a>
             </div>
-            <div class="news-grid container">
-                <article class="news-card reveal">
-                    <span class="news-date">2026.03.01</span>
-                    <span class="news-tag">大会結果</span>
-                    <h3 class="news-title">全日本選手権ジュニアの部 出場決定</h3>
-                </article>
-                <article class="news-card reveal">
-                    <span class="news-date">2026.02.20</span>
-                    <span class="news-tag">お知らせ</span>
-                    <h3 class="news-title">春季短期集中レッスンの受付を開始しました</h3>
-                </article>
-                <article class="news-card reveal">
-                    <span class="news-date">2026.02.15</span>
-                    <span class="news-tag">レポート</span>
-                    <h3 class="news-title">特別講師による技術指導会を実施しました</h3>
-                </article>
+            <div id="news-container" class="news-grid container">
+                <!-- ここにJavaScriptでニュースが追加されます -->
+                <div class="loading-text" style="color: var(--text-dim); grid-column: 1/-1; text-align: center;">
+                    Loading...</div>
             </div>
         </section>
 
@@ -110,7 +98,7 @@
                 <div class="about-text">
                     <h2 class="reveal">未来を拓く、<br>情熱と技術。</h2>
                     <p class="reveal">
-                        J.STYLE卓球アカデミーは、2021年に創設されました。私たちは単なるスキル向上だけでなく、「自ら考える力」「逆境を乗り越える競争力」「尊重し合う心」をキーワードに、世界に通用するトップアスリートの育成に挑んでいます。
+                        J.STYLEは、2024年に創設されました。私たちは「思考力」「努力」「人間力」をキーワードに、卓球を通した青少年の健全育成を目指しています。
                     </p>
                 </div>
                 <div class="about-image reveal">
@@ -127,21 +115,21 @@
                     <div class="course-card reveal">
                         <div class="course-img">
                             <img src="/Users/miyamotosoushi/.gemini/antigravity/brain/02dc0f02-ec95-4d2d-bf39-6431906d1ecb/jstyle_top_athlete_course_premium_1772461305271.png"
-                                alt="トップアスリートコース">
+                                alt="上級コース">
                         </div>
                         <div class="course-info">
-                            <h3>トップアスリートコース</h3>
-                            <p>国際舞台での活躍を目指す選抜コース。高度な戦術指導とフィジカルトレーニングを並行し、プロの卵を育成します。</p>
+                            <h3>上級コース</h3>
+                            <p>全国大会や上位大会出場を目指すコース。高度な戦術指導と多数のコーチサポートによって競技力の向上を目指します。</p>
                         </div>
                     </div>
                     <div class="course-card reveal">
                         <div class="course-img">
                             <img src="/Users/miyamotosoushi/.gemini/antigravity/brain/02dc0f02-ec95-4d2d-bf39-6431906d1ecb/jstyle_junior_course_premium_1772461275454.png"
-                                alt="ジュニアコース">
+                                alt="初級・中級者コース">
                         </div>
                         <div class="course-info">
-                            <h3>ジュニアコース</h3>
-                            <p>年中〜小学6年生対象。卓球の楽しさを知り、夢を持つきっかけを作ります。未経験者も大歓迎です。</p>
+                            <h3>初級・中級者コース</h3>
+                            <p>年中〜中学3年生対象。卓球の楽しさを知り、夢を持つきっかけを作ります。未経験者も大歓迎です。</p>
                         </div>
                     </div>
                 </div>
@@ -149,25 +137,24 @@
         </section>
 
         <!-- Players & Staff -->
-        <section id="players" class="staff-section dark-bg">
+        <section id="staff" class="staff-section dark-bg">
             <div class="container">
-                <h2 class="section-title text-center">PLAYERS & STAFF</h2>
+                <h2 class="section-title text-center">STAFF</h2>
                 <div class="avatar-grid">
                     <div class="staff-card reveal">
-                        <img src="/Users/miyamotosoushi/.gemini/antigravity/brain/02dc0f02-ec95-4d2d-bf39-6431906d1ecb/jstyle_staff_avatar_placeholder_1772461329972.png"
-                            alt="代表コーチ">
-                        <h4>代表コーチ</h4>
-                        <p>JOC公認コーチ</p>
+                        <div class="placeholder-avatar">Y</div>
+                        <h4>山岸 優作</h4>
+                        <p>コーチ</p>
                     </div>
                     <div class="staff-card reveal">
-                        <div class="placeholder-avatar">M.K</div>
-                        <h4>所属選手 A</h4>
-                        <p>全国大会入賞</p>
+                        <div class="placeholder-avatar">K</div>
+                        <h4>倉繁 崇仁</h4>
+                        <p>コーチ</p>
                     </div>
                     <div class="staff-card reveal">
-                        <div class="placeholder-avatar">S.T</div>
-                        <h4>所属選手 B</h4>
-                        <p>県代表</p>
+                        <div class="placeholder-avatar">M</div>
+                        <h4>宮本 爽志</h4>
+                        <p>コーチ</p>
                     </div>
                 </div>
             </div>
@@ -183,10 +170,10 @@
                         <p>〒943-0805 新潟県上越市木田1丁目17-33</p>
                         <div class="schedule-mini">
                             <p>【練習日】 月・水・金 (18:00 - 21:00)</p>
-                            <p>【週末】 大会・遠征・特別練習</p>
+                            <p>【週末】 土曜日　9:00~12:00 他大会・遠征など</p>
                         </div>
-                        <a href="https://goo.gl/maps/UHYvVbX3GXE5oXox8" class="btn btn-outline"
-                            target="_blank">Googleマップで開く</a>
+                        <a href="https://www.google.com/maps/place/%E4%B8%8A%E8%B6%8A%E5%B8%82%E7%B7%8F%E5%90%88%E4%BD%93%E8%82%B2%E9%A4%A8/@37.146295,138.236044,17z/data=!3m1!4b1!4m6!3m5!1s0x5ff67778c9a4b21f:0x347e4f1d96a37b6d!8m2!3d37.146295!4d138.236044!16s%2Fg%2F1tfxxwmj"
+                            class="btn btn-outline" target="_blank">Googleマップで開く</a>
                     </div>
                     <div class="contact-mini reveal">
                         <p>📞 070-2837-6716</p>
@@ -195,7 +182,7 @@
                 </div>
                 <div class="map-container reveal">
                     <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3166.456637380922!2d138.2514163!3d37.1418728!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5ff5b26396e9527f%3A0xe94139e801264c67!2z5LiK6LaK5biC57eP5ZCI5L2T6IKy6aSo!5e0!3m2!1sja!2sjp!4v1710000000000!5m2!1sja!2sjp"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1590.1706689626353!2d138.23604439999998!3d37.14629499999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5ff67778c9a4b21f%3A0x347e4f1d96a37b6d!2z5LiK6BKK5biC576U5ZCI5L2T6IKy6aSo!5e0!3m2!1sja!2sjp!4v1741080665324!5m2!1sja!2sjp"
                         width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
                         referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>

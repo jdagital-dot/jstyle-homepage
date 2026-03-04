@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEWS 一覧 | J.STYLE</title>
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Noto+Sans+JP:wght@400;700;900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body class="news-list-page">
+    <header class="main-header" style="background: rgba(5, 5, 16, 0.95);">
+        <div class="header-inner">
+            <h1 class="logo"><a href="index.html" style="color: inherit; text-decoration: none;">J.STYLE</a></h1>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html#news">NEWS</a></li>
+                    <li><a href="index.html#about">ABOUT</a></li>
+                    <li><a href="index.html#courses">COURSES</a></li>
+                    <li><a href="index.html#staff">STAFF</a></li>
+                    <li><a href="index.html#access">ACCESS</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="news-section" style="padding-top: 150px;">
+            <div class="container">
+                <h2 class="section-title" style="margin-bottom: 60px;">ALL NEWS</h2>
+                <div id="all-news-container" class="news-grid">
+                    <!-- JavaScriptで全ニュースがここに入ります -->
+                    <p style="text-align: center; color: var(--text-dim); grid-column: 1/-1;">読み込み中...</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p class="copyright">© 2026 J.STYLE. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const MICROCMS_SERVICE_DOMAIN = 'j-style-news'; // あなたのサービスドメイン
+        const MICROCMS_API_KEY = 'nuAX2PFCPxRVLB5iRw37iYoQQ5ugY6ncWLHZ'; // あなたのAPIキー
+        const newsContainer = document.getElementById('all-news-container');
+
+        async function fetchAllNews() {
+            try {
+                const response = await fetch(
+                    `https://${MICROCMS_SERVICE_DOMAIN}.microcms.io/api/v1/news?limit=50`, // 最大50件取得
+                    {
+                        headers: { 'X-MICROCMS-API-KEY': MICROCMS_API_KEY }
+                    }
+                );
+                const data = await response.json();
+                renderNews(data.contents);
+            } catch (error) {
+                console.error('取得失敗:', error);
+                newsContainer.innerHTML = '<p style="color:red; grid-column: 1/-1; text-align: center;">読み込みに失敗しました。</p>';
+            }
+        }
+
+        function renderNews(contents) {
+            newsContainer.innerHTML = '';
+            if (contents.length === 0) {
+                newsContainer.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: var(--text-dim);">ニュースはありません。</p>';
+                return;
+            }
+
+            contents.forEach(content => {
+                const date = new Date(content.publishedAt || content.createdAt);
+                const formattedDate = `${date.getFullYear()}.${(date.getMonth() + 1).toString().padStart(2, '0')}.${date.getDate().toString().padStart(2, '0')}`;
+
+                const card = document.createElement('article');
+                card.className = 'news-card'; // リストページではスクロールアニメなしで即表示
+                card.style.cursor = 'pointer';
+                card.style.opacity = '1'; // 即表示
+                card.style.transform = 'none';
+
+                const imageHtml = content.image
+                    ? `<div class="news-image"><img src="${content.image.url}" alt="${content.title}"></div>`
+                    : '';
+
+                card.innerHTML = `
+                    ${imageHtml}
+                    <div class="news-content">
+                        <span class="news-date">${formattedDate}</span>
+                        <span class="news-tag">${content.category || 'お知らせ'}</span>
+                        <h3 class="news-title">${content.title}</h3>
+                    </div>
+                `;
+
+                card.addEventListener('click', () => {
+                    window.location.href = `news-detail.html?id=${content.id}`;
+                });
+
+                newsContainer.appendChild(card);
+            });
+        }
+
+        fetchAllNews();
+    </script>
+</body>
+
+</html>
