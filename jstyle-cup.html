@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>J.STYLE杯 | 上越市の卓球大会</title>
+    <meta name="description" content="J.STYLEが主催する卓球大会「J.STYLE杯」。ジュニア選手の競技力向上と交流を目指す大会です。大会情報・結果はこちら。">
+    <link rel="canonical" href="https://jstyle-tt.jp/jstyle-cup.html">
+    <!-- OGP -->
+    <meta property="og:title" content="J.STYLE杯 | 上越市の卓球大会">
+    <meta property="og:description" content="J.STYLEが主催する卓球大会「J.STYLE杯」。ジュニア選手の競技力向上と交流を目指す大会。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://jstyle-tt.jp/jstyle-cup.html">
+    <!-- Styles & Fonts -->
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Noto+Sans+JP:wght@400;700;900&display=swap"
+        rel="stylesheet">
+    <style>
+        /* J.STYLE杯 専用スタイル */
+        .cup-hero {
+            padding: 180px 10% 120px;
+            position: relative;
+            background: radial-gradient(circle at 30% 50%, rgba(255, 175, 204, 0.12) 0%, transparent 60%),
+                linear-gradient(135deg, var(--bg-dark) 0%, #0a1128 100%);
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .cup-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at 70% 20%, rgba(255, 175, 204, 0.06) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .cup-hero-badge {
+            display: inline-block;
+            padding: 8px 24px;
+            border: 1px solid var(--accent-pink);
+            color: var(--accent-pink);
+            font-size: 0.8rem;
+            font-weight: 800;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            border-radius: 50px;
+            margin-bottom: 30px;
+        }
+
+        .cup-hero h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            background: linear-gradient(to right, #ffffff, var(--accent-pink));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .cup-hero p {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            max-width: 600px;
+            margin: 0 auto 50px;
+            line-height: 1.8;
+        }
+
+        .cup-hero-actions {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* 大会情報カード */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        @media (max-width: 900px) {
+            .info-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .info-card {
+            background: rgba(28, 37, 65, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+
+        .info-card:hover {
+            border-color: rgba(255, 175, 204, 0.4);
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .info-card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .info-card h3 {
+            font-size: 0.85rem;
+            font-weight: 800;
+            letter-spacing: 3px;
+            color: var(--accent-pink);
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .info-card p {
+            font-size: 1.1rem;
+            color: var(--text-white);
+            line-height: 1.6;
+        }
+
+        /* 大会概要セクション */
+        .overview-section {
+            background: #08081a;
+        }
+
+        .overview-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 40px;
+        }
+
+        .overview-table th,
+        .overview-table td {
+            padding: 20px 24px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .overview-table th {
+            width: 220px;
+            color: var(--accent-pink);
+            font-weight: 800;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            vertical-align: top;
+        }
+
+        .overview-table td {
+            color: var(--text-gray);
+            line-height: 1.8;
+        }
+
+        @media (max-width: 600px) {
+            .overview-table th,
+            .overview-table td {
+                display: block;
+                width: 100%;
+                padding: 12px 0;
+            }
+
+            .overview-table th {
+                padding-bottom: 4px;
+            }
+
+            .overview-table tr {
+                display: block;
+                padding: 16px 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            }
+
+            .overview-table tr:last-child {
+                border-bottom: none;
+            }
+
+            .overview-table th,
+            .overview-table td {
+                border-bottom: none;
+            }
+        }
+
+        /* 種目・カテゴリ */
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 24px;
+            margin-top: 50px;
+        }
+
+        .category-card {
+            background: rgba(255, 175, 204, 0.05);
+            border: 1px solid rgba(255, 175, 204, 0.2);
+            border-radius: 16px;
+            padding: 30px 24px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .category-card:hover {
+            background: rgba(255, 175, 204, 0.1);
+            border-color: var(--accent-pink);
+        }
+
+        .category-card .age-range {
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 3px;
+            color: var(--accent-pink);
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .category-card h4 {
+            font-size: 1.3rem;
+            font-weight: 900;
+            color: var(--text-white);
+            margin-bottom: 8px;
+        }
+
+        .category-card p {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+        }
+
+        /* タイムライン（スケジュール） */
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+            margin-top: 50px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 8px;
+            bottom: 8px;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--accent-pink), transparent);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 40px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -36px;
+            top: 6px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--accent-pink);
+            box-shadow: 0 0 12px rgba(255, 175, 204, 0.5);
+        }
+
+        .timeline-date {
+            font-size: 0.8rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: var(--accent-pink);
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+
+        .timeline-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-white);
+            margin-bottom: 4px;
+        }
+
+        .timeline-desc {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+        }
+
+        /* 結果・記録 */
+        .results-section {
+            background: #08081a;
+        }
+
+        .results-tabs {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 40px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .tab-btn {
+            padding: 14px 28px;
+            background: none;
+            border: none;
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            font-weight: 700;
+            cursor: pointer;
+            letter-spacing: 1px;
+            position: relative;
+            transition: color 0.3s ease;
+            font-family: var(--font-main);
+        }
+
+        .tab-btn.active {
+            color: var(--accent-pink);
+        }
+
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--accent-pink);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .result-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .result-table thead th {
+            padding: 14px 20px;
+            text-align: left;
+            font-size: 0.8rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: var(--accent-pink);
+            text-transform: uppercase;
+            border-bottom: 1px solid rgba(255, 175, 204, 0.2);
+        }
+
+        .result-table tbody tr {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            transition: background 0.2s ease;
+        }
+
+        .result-table tbody tr:hover {
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .result-table tbody td {
+            padding: 16px 20px;
+            color: var(--text-gray);
+            font-size: 0.95rem;
+        }
+
+        .result-table tbody td:first-child {
+            color: var(--text-white);
+            font-weight: 700;
+        }
+
+        .rank-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            font-size: 0.85rem;
+            font-weight: 900;
+        }
+
+        .rank-1 {
+            background: linear-gradient(135deg, #ffd700, #ff8c00);
+            color: #000;
+        }
+
+        .rank-2 {
+            background: linear-gradient(135deg, #c0c0c0, #808080);
+            color: #000;
+        }
+
+        .rank-3 {
+            background: linear-gradient(135deg, #cd7f32, #8b4513);
+            color: #fff;
+        }
+
+        .rank-other {
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--text-gray);
+        }
+
+        .coming-soon-box {
+            text-align: center;
+            padding: 80px 40px;
+            background: rgba(28, 37, 65, 0.3);
+            border: 1px dashed rgba(255, 175, 204, 0.2);
+            border-radius: 20px;
+            color: var(--text-gray);
+        }
+
+        .coming-soon-box .icon {
+            font-size: 3rem;
+            display: block;
+            margin-bottom: 20px;
+            opacity: 0.5;
+        }
+
+        .coming-soon-box p {
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        /* エントリー */
+        .entry-section {
+            background: var(--bg-dark);
+        }
+
+        .entry-card {
+            background: linear-gradient(135deg, rgba(255, 175, 204, 0.08) 0%, rgba(28, 37, 65, 0.6) 100%);
+            border: 1px solid rgba(255, 175, 204, 0.25);
+            border-radius: 24px;
+            padding: 60px;
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .entry-card h3 {
+            font-size: 2rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+        }
+
+        .entry-card p {
+            color: var(--text-gray);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 40px;
+        }
+
+        .entry-card .entry-actions {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .entry-note {
+            margin-top: 30px;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* ページ内ナビ */
+        .page-nav {
+            position: sticky;
+            top: 80px;
+            background: rgba(5, 5, 16, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            z-index: 900;
+            padding: 0;
+        }
+
+        .page-nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            gap: 0;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+
+        .page-nav-inner::-webkit-scrollbar {
+            display: none;
+        }
+
+        .page-nav-link {
+            padding: 18px 24px;
+            color: var(--text-gray);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            white-space: nowrap;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .page-nav-link:hover {
+            color: var(--accent-pink);
+        }
+
+        .page-nav-link.active {
+            color: var(--accent-pink);
+        }
+
+        .page-nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--accent-pink);
+        }
+
+        /* 戻るリンク */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-gray);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 700;
+            transition: color 0.3s ease;
+            margin-bottom: 30px;
+        }
+
+        .back-link:hover {
+            color: var(--accent-pink);
+        }
+
+        .back-link::before {
+            content: '←';
+        }
+
+        /* about-section のテキストカラー上書き */
+        .about-text p {
+            color: var(--text-gray);
+            font-size: 1.05rem;
+            line-height: 1.9;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 24px;
+            line-height: 1.2;
+        }
+
+        @media (max-width: 768px) {
+            .cup-hero {
+                padding: 140px 6% 100px;
+            }
+
+            .overview-section .container {
+                padding: 0 20px;
+            }
+
+            .entry-card {
+                padding: 40px 24px;
+            }
+
+            .results-tabs {
+                overflow-x: auto;
+                scrollbar-width: none;
+            }
+
+            .result-table {
+                font-size: 0.85rem;
+            }
+
+            .result-table thead th,
+            .result-table tbody td {
+                padding: 12px 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="main-header">
+        <div class="header-inner">
+            <a href="index.html" class="logo" style="text-decoration: none;">J.STYLE</a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html#news">NEWS</a></li>
+                    <li><a href="index.html#about">ABOUT</a></li>
+                    <li><a href="index.html#courses">COURSES</a></li>
+                    <li><a href="index.html#staff">STAFF</a></li>
+                    <li><a href="index.html#access">ACCESS</a></li>
+                    <li><a href="jstyle-cup.html" style="color: var(--accent-pink);">J.STYLE杯</a></li>
+                </ul>
+            </nav>
+            <a href="index.html#access" class="cta-button-small">体験申込</a>
+        </div>
+    </header>
+
+    <!-- ページ内ナビ -->
+    <nav class="page-nav">
+        <div class="page-nav-inner">
+            <a href="#overview" class="page-nav-link">大会概要</a>
+            <a href="#categories" class="page-nav-link">種目・カテゴリ</a>
+            <a href="#schedule" class="page-nav-link">スケジュール</a>
+            <a href="#results" class="page-nav-link">大会結果</a>
+            <a href="#entry" class="page-nav-link">エントリー</a>
+        </div>
+    </nav>
+
+    <main>
+        <!-- ヒーロー -->
+        <section class="cup-hero">
+            <div class="cup-hero-badge">TOURNAMENT</div>
+            <h1>J.STYLE杯</h1>
+            <p>J.STYLEが主催する卓球大会。<br>ジュニア選手の競技力向上と、仲間との交流を大切にした大会です。</p>
+            <div class="cup-hero-actions">
+                <a href="#entry" class="btn btn-primary">エントリー情報</a>
+                <a href="#overview" class="btn btn-outline">大会概要を見る</a>
+            </div>
+
+            <div class="info-grid container">
+                <div class="info-card reveal">
+                    <span class="info-card-icon">📅</span>
+                    <h3>開催日</h3>
+                    <p>年1〜2回開催<br>詳細は随時お知らせ</p>
+                </div>
+                <div class="info-card reveal">
+                    <span class="info-card-icon">📍</span>
+                    <h3>会場</h3>
+                    <p>上越市総合体育館<br>新潟県上越市木田1丁目17-33</p>
+                </div>
+                <div class="info-card reveal">
+                    <span class="info-card-icon">🏓</span>
+                    <h3>対象</h3>
+                    <p>小学生〜中学生<br>（各種目・カテゴリ参照）</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 大会概要 -->
+        <section id="overview" class="overview-section">
+            <div class="container">
+                <h2 class="section-title reveal">大会概要</h2>
+                <div class="grid-2">
+                    <div class="about-text">
+                        <h2 class="reveal">競技を通じて、<br><span style="color: var(--accent-pink);">仲間と共に成長する。</span></h2>
+                        <p class="reveal">
+                            J.STYLE杯は、J.STYLEが主催する卓球大会です。上越市を中心とした新潟県内のジュニア選手が一堂に集い、切磋琢磨できる場を提供します。
+                        </p>
+                        <p class="reveal" style="margin-top: 16px;">
+                            勝敗を超えた「競技の喜び」「フェアプレー精神」「仲間との絆」を大切にし、選手一人ひとりの成長を後押しします。
+                        </p>
+                    </div>
+                    <div>
+                        <table class="overview-table reveal">
+                            <tr>
+                                <th>大会名</th>
+                                <td>J.STYLE杯 卓球大会</td>
+                            </tr>
+                            <tr>
+                                <th>主催</th>
+                                <td>J.STYLE（ジェイスタイル）</td>
+                            </tr>
+                            <tr>
+                                <th>会場</th>
+                                <td>上越市総合体育館<br>〒943-0805 新潟県上越市木田1丁目17-33</td>
+                            </tr>
+                            <tr>
+                                <th>対象</th>
+                                <td>小学生・中学生（各種目参照）</td>
+                            </tr>
+                            <tr>
+                                <th>参加費</th>
+                                <td>詳細は各大会のお知らせをご確認ください</td>
+                            </tr>
+                            <tr>
+                                <th>お問い合わせ</th>
+                                <td>
+                                    📞 070-2837-6716<br>
+                                    ✉️ j.style2024tt.team@gmail.com
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 種目・カテゴリ -->
+        <section id="categories" class="dark-bg">
+            <div class="container">
+                <h2 class="section-title text-center reveal">種目・カテゴリ</h2>
+                <p class="text-center reveal" style="color: var(--text-gray); margin-top: -40px; margin-bottom: 0;">
+                    ※ カテゴリや種目は大会ごとに変更になる場合があります。各大会のお知らせをご確認ください。
+                </p>
+                <div class="category-grid">
+                    <div class="category-card reveal">
+                        <span class="age-range">小学生</span>
+                        <h4>小学生男子</h4>
+                        <p>シングルス</p>
+                    </div>
+                    <div class="category-card reveal">
+                        <span class="age-range">小学生</span>
+                        <h4>小学生女子</h4>
+                        <p>シングルス</p>
+                    </div>
+                    <div class="category-card reveal">
+                        <span class="age-range">中学生</span>
+                        <h4>中学生男子</h4>
+                        <p>シングルス</p>
+                    </div>
+                    <div class="category-card reveal">
+                        <span class="age-range">中学生</span>
+                        <h4>中学生女子</h4>
+                        <p>シングルス</p>
+                    </div>
+                    <div class="category-card reveal">
+                        <span class="age-range">混合</span>
+                        <h4>団体戦</h4>
+                        <p>チーム対抗（詳細は各大会参照）</p>
+                    </div>
+                    <div class="category-card reveal">
+                        <span class="age-range">オープン</span>
+                        <h4>オープン部門</h4>
+                        <p>学年・性別混合（詳細は各大会参照）</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- スケジュール -->
+        <section id="schedule">
+            <div class="container">
+                <h2 class="section-title reveal">スケジュール</h2>
+                <p class="reveal" style="color: var(--text-gray); margin-top: -40px; margin-bottom: 0;">
+                    次回大会の詳細は決定次第、NEWSにてお知らせします。
+                </p>
+                <div class="timeline">
+                    <div class="timeline-item reveal">
+                        <div class="timeline-date">STEP 1</div>
+                        <div class="timeline-title">大会告知・エントリー開始</div>
+                        <div class="timeline-desc">開催約2ヶ月前にNEWSおよびSNSにてお知らせします</div>
+                    </div>
+                    <div class="timeline-item reveal">
+                        <div class="timeline-date">STEP 2</div>
+                        <div class="timeline-title">エントリー締切</div>
+                        <div class="timeline-desc">開催約3〜4週間前が目安。締切は各大会のお知らせをご確認ください</div>
+                    </div>
+                    <div class="timeline-item reveal">
+                        <div class="timeline-date">STEP 3</div>
+                        <div class="timeline-title">組み合わせ発表</div>
+                        <div class="timeline-desc">開催1〜2週間前に組み合わせを発表予定</div>
+                    </div>
+                    <div class="timeline-item reveal">
+                        <div class="timeline-date">STEP 4</div>
+                        <div class="timeline-title">大会当日</div>
+                        <div class="timeline-desc">上越市総合体育館にて開催。受付は開始時刻の30分前から</div>
+                    </div>
+                    <div class="timeline-item reveal">
+                        <div class="timeline-date">STEP 5</div>
+                        <div class="timeline-title">結果発表</div>
+                        <div class="timeline-desc">大会終了後、このページおよびNEWSにて結果を掲載します</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 大会結果 -->
+        <section id="results" class="results-section">
+            <div class="container">
+                <h2 class="section-title reveal">大会結果</h2>
+                <div class="reveal">
+                    <div class="results-tabs">
+                        <button class="tab-btn active" onclick="switchTab(event, 'tab-latest')">第1回 (準備中)</button>
+                    </div>
+                    <div id="tab-latest" class="tab-content active">
+                        <div class="coming-soon-box">
+                            <span class="icon">🏆</span>
+                            <p>第1回 J.STYLE杯の大会結果は、<br>大会終了後にこちらで発表します。<br>開催情報はNEWSをお待ちください。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- エントリー -->
+        <section id="entry" class="entry-section">
+            <div class="container">
+                <h2 class="section-title text-center reveal">エントリー</h2>
+                <div class="entry-card reveal">
+                    <h3>エントリーについて</h3>
+                    <p>
+                        エントリーの受付は、各大会の告知時に開始します。<br>
+                        詳細はNEWSまたは直接お問い合わせください。<br>
+                        J.STYLE会員以外の方もご参加いただけます。
+                    </p>
+                    <div class="entry-actions">
+                        <a href="mailto:j.style2024tt.team@gmail.com" class="btn btn-primary">メールで問い合わせる</a>
+                        <a href="tel:070-2837-6716" class="btn btn-outline">電話で問い合わせる</a>
+                    </div>
+                    <p class="entry-note">
+                        📞 070-2837-6716 ／ ✉️ j.style2024tt.team@gmail.com<br>
+                        お問い合わせはお気軽にどうぞ
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo" style="text-decoration: none; display: block; margin-bottom: 10px;">J.STYLE</a>
+                    <p>Future of Table Tennis</p>
+                </div>
+                <div class="footer-links">
+                    <ul>
+                        <li><a href="index.html#about">団体概要</a></li>
+                        <li><a href="jstyle-cup.html">J.STYLE杯</a></li>
+                        <li><a href="#">お問い合わせ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <p class="copyright">© 2026 J.STYLE. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // タブ切り替え
+        function switchTab(e, tabId) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
+            e.currentTarget.classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+        }
+
+        // スクロールアニメーション
+        const reveals = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, i) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('active');
+                    }, i * 80);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        reveals.forEach(el => observer.observe(el));
+
+        // ページ内ナビのアクティブ制御
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.page-nav-link');
+        const sectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    navLinks.forEach(link => {
+                        link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id);
+                    });
+                }
+            });
+        }, { threshold: 0.4 });
+        sections.forEach(s => sectionObserver.observe(s));
+    </script>
+</body>
+
+</html>
