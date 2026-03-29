@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>お問い合わせ | J.STYLE</title>
+    <meta name="description" content="J.STYLEへのお問い合わせ・体験申込はこちら。コースについてのご質問もお気軽にどうぞ。">
+    <link rel="canonical" href="https://jstyle-tt.jp/contact.html">
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;700;900&family=Noto+Sans+JP:wght@400;700;900&display=swap"
+        rel="stylesheet">
+    <style>
+        .contact-hero {
+            padding: 160px 0 80px;
+            position: relative;
+            background:
+                radial-gradient(ellipse 60% 50% at 70% 20%, rgba(255, 107, 157, 0.1) 0%, transparent 60%),
+                linear-gradient(160deg, #050510 0%, #0a1028 100%);
+        }
+
+        .contact-hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--border-accent), transparent);
+        }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 24px;
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            letter-spacing: 1px;
+        }
+
+        .breadcrumb a {
+            color: var(--text-dim);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .breadcrumb a:hover { color: var(--accent-pink); }
+        .breadcrumb span { color: var(--accent-pink); }
+
+        .contact-section {
+            padding: 80px 0 120px;
+        }
+
+        .contact-layout {
+            display: grid;
+            grid-template-columns: 1fr 1.6fr;
+            gap: 64px;
+            align-items: start;
+        }
+
+        @media (max-width: 900px) {
+            .contact-layout {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+        }
+
+        /* ===== LEFT INFO ===== */
+        .contact-info h2 {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 900;
+            margin-bottom: 16px;
+            line-height: 1.4;
+        }
+
+        .contact-info p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            line-height: 1.9;
+            margin-bottom: 40px;
+        }
+
+        .contact-direct {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .contact-direct-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 18px 20px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-subtle);
+            border-radius: 14px;
+            text-decoration: none;
+            transition: var(--transition);
+            min-height: 64px;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-direct-item:hover {
+            border-color: var(--border-accent);
+            transform: translateX(4px);
+        }
+
+        .contact-direct-item svg {
+            color: var(--accent-pink);
+            flex-shrink: 0;
+        }
+
+        .contact-direct-item .label {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            color: var(--accent-pink);
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .contact-direct-item .value {
+            font-size: 0.95rem;
+            color: var(--text-white);
+            font-weight: 600;
+        }
+
+        /* ===== FORM ===== */
+        .contact-form-wrap {
+            background: var(--card-bg);
+            border: 1px solid var(--border-subtle);
+            border-radius: 24px;
+            padding: 48px 40px;
+            backdrop-filter: blur(16px);
+        }
+
+        @media (max-width: 600px) {
+            .contact-form-wrap {
+                padding: 32px 20px;
+            }
+        }
+
+        .form-title {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            letter-spacing: 4px;
+            margin-bottom: 32px;
+            color: var(--text-white);
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: var(--text-gray);
+            margin-bottom: 8px;
+        }
+
+        .required-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            background: rgba(255, 107, 157, 0.15);
+            color: var(--accent-pink-deep);
+            border: 1px solid rgba(255, 107, 157, 0.3);
+            border-radius: 4px;
+            font-size: 0.65rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .optional-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-dim);
+            border: 1px solid var(--border-subtle);
+            border-radius: 4px;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-subtle);
+            border-radius: 10px;
+            padding: 14px 16px;
+            color: var(--text-white);
+            font-size: 1rem;
+            font-family: var(--font-main);
+            transition: var(--transition-fast);
+            outline: none;
+            -webkit-appearance: none;
+        }
+
+        .form-input::placeholder,
+        .form-textarea::placeholder {
+            color: rgba(255, 255, 255, 0.2);
+        }
+
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            border-color: var(--accent-pink);
+            background: rgba(255, 175, 204, 0.04);
+            box-shadow: 0 0 0 3px rgba(255, 175, 204, 0.08);
+        }
+
+        .form-select {
+            cursor: pointer;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23a0a0b0' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+            padding-right: 40px;
+        }
+
+        .form-select option {
+            background: #10112a;
+            color: var(--text-white);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 140px;
+            line-height: 1.7;
+        }
+
+        .form-submit {
+            width: 100%;
+            margin-top: 8px;
+            background: linear-gradient(135deg, var(--accent-pink), var(--accent-pink-deep));
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            padding: 18px;
+            font-size: 1rem;
+            font-weight: 800;
+            font-family: var(--font-main);
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: var(--transition);
+            min-height: 56px;
+            touch-action: manipulation;
+        }
+
+        .form-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 36px rgba(255, 107, 157, 0.4);
+        }
+
+        .form-submit:active {
+            transform: translateY(0);
+        }
+
+        .form-submit:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .form-note {
+            margin-top: 16px;
+            font-size: 0.78rem;
+            color: var(--text-dim);
+            line-height: 1.7;
+            text-align: center;
+        }
+
+        /* 送信完了メッセージ */
+        .form-success {
+            display: none;
+            text-align: center;
+            padding: 48px 24px;
+        }
+
+        .form-success.active {
+            display: block;
+        }
+
+        .form-success svg {
+            color: var(--accent-pink);
+            margin-bottom: 20px;
+        }
+
+        .form-success h3 {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 900;
+            margin-bottom: 12px;
+        }
+
+        .form-success p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        /* エラーメッセージ */
+        .field-error {
+            display: none;
+            font-size: 0.78rem;
+            color: #ff6b6b;
+            margin-top: 6px;
+        }
+
+        .field-error.active {
+            display: block;
+        }
+
+        .form-input.error,
+        .form-select.error,
+        .form-textarea.error {
+            border-color: #ff6b6b;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="main-header" style="background: rgba(5, 5, 16, 0.95);">
+        <div class="header-inner">
+            <h1 class="logo"><a href="index.html" style="text-decoration:none; background: inherit; -webkit-text-fill-color: transparent;">J.STYLE</a></h1>
+            <nav class="main-nav" id="main-nav">
+                <ul>
+                    <li><a href="index.html#news">NEWS</a></li>
+                    <li><a href="index.html#about">ABOUT</a></li>
+                    <li><a href="index.html#courses">COURSES</a></li>
+                    <li><a href="index.html#staff">STAFF</a></li>
+                    <li><a href="index.html#access">ACCESS</a></li>
+                    <li><a href="jstyle-cup.html">J.STYLE杯</a></li>
+                    <li><a href="contact.html" style="color: var(--accent-pink);">お問い合わせ</a></li>
+                </ul>
+            </nav>
+            <a href="contact.html" class="cta-button-small">体験申込</a>
+            <button class="hamburger" id="hamburger" aria-label="メニュー">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section class="contact-hero">
+            <div class="container">
+                <nav class="breadcrumb" aria-label="パンくずリスト">
+                    <a href="index.html">HOME</a>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                    <span>お問い合わせ</span>
+                </nav>
+                <h2 class="section-title" style="margin-bottom: 12px;">CONTACT</h2>
+                <p style="color: var(--text-gray); font-size: 1rem; line-height: 1.8;">体験・見学のお申し込みや、コース・大会に関するご質問はこちらから。</p>
+            </div>
+        </section>
+
+        <section class="contact-section">
+            <div class="container">
+                <div class="contact-layout">
+                    <!-- 左：直接連絡先 -->
+                    <div class="contact-info">
+                        <h2>お気軽に<br>ご連絡ください</h2>
+                        <p>フォームのほか、お電話・メールでも受け付けています。<br>お返事は通常1〜3営業日以内にいたします。</p>
+                        <div class="contact-direct">
+                            <a href="tel:070-2837-6716" class="contact-direct-item">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.63 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.54 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                                <div>
+                                    <span class="label">TEL</span>
+                                    <span class="value">070-2837-6716</span>
+                                </div>
+                            </a>
+                            <a href="mailto:j.style2024tt.team@gmail.com" class="contact-direct-item">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+                                <div>
+                                    <span class="label">EMAIL</span>
+                                    <span class="value">j.style2024tt.team@gmail.com</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- 右：フォーム -->
+                    <div class="contact-form-wrap">
+                        <p class="form-title">SEND MESSAGE</p>
+
+                        <!-- 送信完了 -->
+                        <div class="form-success" id="form-success">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                            <h3>送信が完了しました</h3>
+                            <p>お問い合わせありがとうございます。<br>通常1〜3営業日以内にご返信いたします。</p>
+                        </div>
+
+                        <!-- フォーム本体 -->
+                        <!-- ⚠️ Formspreeアカウント作成後、action="https://formspree.io/f/XXXXXXXX" のXXXXXXXXをあなたのフォームIDに変更してください -->
+                        <form id="contact-form" action="https://formspree.io/f/XXXXXXXX" method="POST" novalidate>
+                            <input type="hidden" name="_language" value="ja">
+                            <input type="hidden" name="_subject" value="【J.STYLE】お問い合わせ">
+
+                            <div class="form-group">
+                                <label class="form-label" for="name">
+                                    お名前 <span class="required-badge">必須</span>
+                                </label>
+                                <input class="form-input" type="text" id="name" name="name"
+                                    placeholder="例：山田 太郎" autocomplete="name" required>
+                                <p class="field-error" id="name-error">お名前を入力してください</p>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="phone">
+                                    電話番号 <span class="optional-badge">任意</span>
+                                </label>
+                                <input class="form-input" type="tel" id="phone" name="phone"
+                                    placeholder="例：070-0000-0000" autocomplete="tel">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="email">
+                                    メールアドレス <span class="required-badge">必須</span>
+                                </label>
+                                <input class="form-input" type="email" id="email" name="email"
+                                    placeholder="例：example@email.com" autocomplete="email" required>
+                                <p class="field-error" id="email-error">正しいメールアドレスを入力してください</p>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="category">
+                                    お問い合わせ種別 <span class="required-badge">必須</span>
+                                </label>
+                                <select class="form-select" id="category" name="category" required>
+                                    <option value="" disabled selected>選択してください</option>
+                                    <option value="体験・見学申し込み">体験・見学申し込み</option>
+                                    <option value="コースについて">コースについて</option>
+                                    <option value="大会について">大会について</option>
+                                    <option value="その他">その他</option>
+                                </select>
+                                <p class="field-error" id="category-error">種別を選択してください</p>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="message">
+                                    お問い合わせ内容 <span class="required-badge">必須</span>
+                                </label>
+                                <textarea class="form-textarea" id="message" name="message"
+                                    placeholder="ご質問・ご要望をご記入ください" required></textarea>
+                                <p class="field-error" id="message-error">お問い合わせ内容を入力してください</p>
+                            </div>
+
+                            <button type="submit" class="form-submit" id="submit-btn">
+                                送信する
+                            </button>
+                            <p class="form-note">送信後、確認メールをお送りします。<br>迷惑メールフォルダもご確認ください。</p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo" style="text-decoration: none; display: block; margin-bottom: 12px;">J.STYLE</a>
+                    <p>Future of Table Tennis</p>
+                </div>
+                <div class="footer-links">
+                    <ul>
+                        <li><a href="index.html#about">団体概要</a></li>
+                        <li><a href="jstyle-cup.html">J.STYLE杯</a></li>
+                        <li><a href="contact.html">お問い合わせ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <p class="copyright">© 2026 J.STYLE. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // ハンバーガーメニュー
+        const hamburger = document.getElementById('hamburger');
+        const mainNav = document.getElementById('main-nav');
+        if (hamburger && mainNav) {
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('open');
+                mainNav.classList.toggle('open');
+            });
+            mainNav.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('open');
+                    mainNav.classList.remove('open');
+                });
+            });
+        }
+
+        // フォーム送信
+        const form = document.getElementById('contact-form');
+        const submitBtn = document.getElementById('submit-btn');
+        const successMsg = document.getElementById('form-success');
+
+        function validateField(id, errorId, condition) {
+            const field = document.getElementById(id);
+            const error = document.getElementById(errorId);
+            if (condition) {
+                field.classList.remove('error');
+                error.classList.remove('active');
+                return true;
+            } else {
+                field.classList.add('error');
+                error.classList.add('active');
+                return false;
+            }
+        }
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const category = document.getElementById('category').value;
+            const message = document.getElementById('message').value.trim();
+
+            const v1 = validateField('name', 'name-error', name.length > 0);
+            const v2 = validateField('email', 'email-error', /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email));
+            const v3 = validateField('category', 'category-error', category !== '');
+            const v4 = validateField('message', 'message-error', message.length > 0);
+
+            if (!v1 || !v2 || !v3 || !v4) return;
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = '送信中...';
+
+            try {
+                const res = await fetch(form.action, {
+                    method: 'POST',
+                    body: new FormData(form),
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                if (res.ok) {
+                    form.style.display = 'none';
+                    successMsg.classList.add('active');
+                } else {
+                    throw new Error();
+                }
+            } catch {
+                submitBtn.disabled = false;
+                submitBtn.textContent = '送信する';
+                alert('送信に失敗しました。お手数ですがメールまたはお電話でご連絡ください。');
+            }
+        });
+
+        // インラインバリデーション（blur時）
+        ['name', 'email', 'category', 'message'].forEach(id => {
+            const el = document.getElementById(id);
+            if (!el) return;
+            el.addEventListener('blur', () => {
+                const val = el.value.trim();
+                if (id === 'name') validateField('name', 'name-error', val.length > 0);
+                if (id === 'email') validateField('email', 'email-error', /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val));
+                if (id === 'category') validateField('category', 'category-error', val !== '');
+                if (id === 'message') validateField('message', 'message-error', val.length > 0);
+            });
+        });
+    </script>
+</body>
+
+</html>
