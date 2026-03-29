@@ -5,35 +5,148 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NEWS 一覧 | J.STYLE</title>
+    <meta name="description" content="J.STYLEの最新ニュース一覧。大会結果、練習情報、チームのお知らせをお届けします。">
     <link rel="stylesheet" href="style.css">
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Noto+Sans+JP:wght@400;700;900&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;700;900&family=Noto+Sans+JP:wght@400;700;900&display=swap"
         rel="stylesheet">
+    <style>
+        .news-list-hero {
+            padding: 160px 0 80px;
+            position: relative;
+            background:
+                radial-gradient(ellipse 60% 50% at 80% 20%, rgba(255, 107, 157, 0.08) 0%, transparent 60%),
+                linear-gradient(160deg, #050510 0%, #0a1028 100%);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .news-list-hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--border-accent), transparent);
+        }
+
+        .news-list-hero .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 24px;
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            letter-spacing: 1px;
+        }
+
+        .news-list-hero .breadcrumb a {
+            color: var(--text-dim);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .news-list-hero .breadcrumb a:hover {
+            color: var(--accent-pink);
+        }
+
+        .news-list-hero .breadcrumb span {
+            color: var(--accent-pink);
+        }
+
+        .news-list-section {
+            padding: 80px 0 120px;
+            background: var(--bg-dark);
+        }
+
+        .news-filter {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 48px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 8px 20px;
+            background: var(--surface-1);
+            border: 1px solid var(--border-subtle);
+            border-radius: 50px;
+            color: var(--text-gray);
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: var(--transition-fast);
+            font-family: var(--font-main);
+            min-height: 44px;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: rgba(255, 175, 204, 0.08);
+            border-color: var(--border-accent);
+            color: var(--accent-pink);
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 80px 20px;
+            color: var(--text-dim);
+            grid-column: 1 / -1;
+        }
+
+        .empty-state svg {
+            opacity: 0.3;
+            margin-bottom: 20px;
+        }
+
+        .empty-state p {
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+    </style>
 </head>
 
-<body class="news-list-page">
+<body>
     <header class="main-header" style="background: rgba(5, 5, 16, 0.95);">
         <div class="header-inner">
-            <h1 class="logo"><a href="index.html" style="color: inherit; text-decoration: none;">J.STYLE</a></h1>
-            <nav class="main-nav">
+            <h1 class="logo"><a href="index.html" style="color: inherit; text-decoration: none; background: inherit; -webkit-text-fill-color: transparent;">J.STYLE</a></h1>
+            <nav class="main-nav" id="main-nav">
                 <ul>
                     <li><a href="index.html#news">NEWS</a></li>
                     <li><a href="index.html#about">ABOUT</a></li>
                     <li><a href="index.html#courses">COURSES</a></li>
                     <li><a href="index.html#staff">STAFF</a></li>
                     <li><a href="index.html#access">ACCESS</a></li>
+                    <li><a href="jstyle-cup.html" style="color: var(--accent-pink);">J.STYLE杯</a></li>
                 </ul>
             </nav>
+            <a href="index.html#access" class="cta-button-small">体験申込</a>
+            <button class="hamburger" id="hamburger" aria-label="メニュー">
+                <span></span><span></span><span></span>
+            </button>
         </div>
     </header>
 
     <main>
-        <section class="news-section" style="padding-top: 150px;">
+        <section class="news-list-hero">
             <div class="container">
-                <h2 class="section-title" style="margin-bottom: 60px;">ALL NEWS</h2>
+                <nav class="breadcrumb" aria-label="パンくずリスト">
+                    <a href="index.html">HOME</a>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                    <span>NEWS</span>
+                </nav>
+                <h2 class="section-title" style="margin-bottom: 0;">ALL NEWS</h2>
+            </div>
+        </section>
+
+        <section class="news-list-section">
+            <div class="container">
                 <div id="all-news-container" class="news-grid">
-                    <!-- JavaScriptで全ニュースがここに入ります -->
-                    <p style="text-align: center; color: var(--text-dim); grid-column: 1/-1;">読み込み中...</p>
+                    <div class="empty-state">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                        <p>読み込み中...</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -41,50 +154,86 @@
 
     <footer class="main-footer">
         <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo" style="text-decoration: none; display: block; margin-bottom: 12px;">J.STYLE</a>
+                    <p>Future of Table Tennis</p>
+                </div>
+                <div class="footer-links">
+                    <ul>
+                        <li><a href="index.html#about">団体概要</a></li>
+                        <li><a href="jstyle-cup.html">J.STYLE杯</a></li>
+                        <li><a href="index.html#access">お問い合わせ</a></li>
+                    </ul>
+                </div>
+            </div>
             <p class="copyright">© 2026 J.STYLE. All rights reserved.</p>
         </div>
     </footer>
 
     <script>
-        const MICROCMS_SERVICE_DOMAIN = 'j-style-news'; // あなたのサービスドメイン
-        const MICROCMS_API_KEY = 'nuAX2PFCPxRVLB5iRw37iYoQQ5ugY6ncWLHZ'; // あなたのAPIキー
+        // ハンバーガーメニュー
+        const hamburger = document.getElementById('hamburger');
+        const mainNav = document.getElementById('main-nav');
+        if (hamburger && mainNav) {
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('open');
+                mainNav.classList.toggle('open');
+            });
+            mainNav.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('open');
+                    mainNav.classList.remove('open');
+                });
+            });
+        }
+
+        const MICROCMS_SERVICE_DOMAIN = 'j-style-news';
+        const MICROCMS_API_KEY = 'nuAX2PFCPxRVLB5iRw37iYoQQ5ugY6ncWLHZ';
         const newsContainer = document.getElementById('all-news-container');
 
         async function fetchAllNews() {
             try {
                 const response = await fetch(
-                    `https://${MICROCMS_SERVICE_DOMAIN}.microcms.io/api/v1/news?limit=50`, // 最大50件取得
-                    {
-                        headers: { 'X-MICROCMS-API-KEY': MICROCMS_API_KEY }
-                    }
+                    `https://${MICROCMS_SERVICE_DOMAIN}.microcms.io/api/v1/news?limit=50`,
+                    { headers: { 'X-MICROCMS-API-KEY': MICROCMS_API_KEY } }
                 );
                 const data = await response.json();
                 renderNews(data.contents);
             } catch (error) {
                 console.error('取得失敗:', error);
-                newsContainer.innerHTML = '<p style="color:red; grid-column: 1/-1; text-align: center;">読み込みに失敗しました。</p>';
+                newsContainer.innerHTML = `
+                    <div class="empty-state">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                        <p>読み込みに失敗しました。<br>しばらく経ってから再度お試しください。</p>
+                    </div>`;
             }
         }
 
         function renderNews(contents) {
             newsContainer.innerHTML = '';
-            if (contents.length === 0) {
-                newsContainer.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: var(--text-dim);">ニュースはありません。</p>';
+            if (!contents || contents.length === 0) {
+                newsContainer.innerHTML = `
+                    <div class="empty-state">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                        <p>ニュースはまだありません。</p>
+                    </div>`;
                 return;
             }
 
-            contents.forEach(content => {
+            contents.forEach((content, i) => {
                 const date = new Date(content.publishedAt || content.createdAt);
                 const formattedDate = `${date.getFullYear()}.${(date.getMonth() + 1).toString().padStart(2, '0')}.${date.getDate().toString().padStart(2, '0')}`;
 
                 const card = document.createElement('article');
-                card.className = 'news-card'; // リストページではスクロールアニメなしで即表示
-                card.style.cursor = 'pointer';
-                card.style.opacity = '1'; // 即表示
-                card.style.transform = 'none';
+                card.className = 'news-card reveal';
+                card.style.animationDelay = `${i * 60}ms`;
+                card.setAttribute('tabindex', '0');
+                card.setAttribute('role', 'button');
+                card.setAttribute('aria-label', content.title);
 
                 const imageHtml = content.image
-                    ? `<div class="news-image"><img src="${content.image.url}" alt="${content.title}"></div>`
+                    ? `<div class="news-image"><img src="${content.image.url}" alt="${content.title}" loading="lazy" width="400" height="225"></div>`
                     : '';
 
                 card.innerHTML = `
@@ -99,9 +248,25 @@
                 card.addEventListener('click', () => {
                     window.location.href = `news-detail.html?id=${content.id}`;
                 });
+                card.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        window.location.href = `news-detail.html?id=${content.id}`;
+                    }
+                });
 
                 newsContainer.appendChild(card);
             });
+
+            // スクロールアニメ
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, i) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => entry.target.classList.add('active'), i * 60);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
         }
 
         fetchAllNews();

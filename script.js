@@ -1,4 +1,20 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // --- Hamburger Menu ---
+    const hamburger = document.getElementById('hamburger');
+    const mainNav = document.getElementById('main-nav');
+    if (hamburger && mainNav) {
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('open');
+            mainNav.classList.toggle('open');
+        });
+        mainNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('open');
+                mainNav.classList.remove('open');
+            });
+        });
+    }
+
     // --- Opening Animation ---
     const openCanvas = document.getElementById('opening-canvas');
     if (openCanvas) {

@@ -16,7 +16,7 @@
     <!-- Styles & Fonts -->
     <link rel="stylesheet" href="style.css">
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Noto+Sans+JP:wght@400;700;900&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;700;900&family=Noto+Sans+JP:wght@400;700;900&display=swap"
         rel="stylesheet">
     <!-- JSON-LD -->
     <script type="application/ld+json">
@@ -50,7 +50,7 @@
     <header class="main-header">
         <div class="header-inner">
             <h1 class="logo">J.STYLE</h1>
-            <nav class="main-nav">
+            <nav class="main-nav" id="main-nav">
                 <ul>
                     <li><a href="#news">NEWS</a></li>
                     <li><a href="#about">ABOUT</a></li>
@@ -61,6 +61,9 @@
                 </ul>
             </nav>
             <a href="#access" class="cta-button-small">体験申込</a>
+            <button class="hamburger" id="hamburger" aria-label="メニュー">
+                <span></span><span></span><span></span>
+            </button>
         </div>
     </header>
 
@@ -177,8 +180,14 @@
                             class="btn btn-outline" target="_blank">Googleマップで開く</a>
                     </div>
                     <div class="contact-mini reveal">
-                        <p>📞 070-2837-6716</p>
-                        <p>✉️ j.style2024tt.team@gmail.com</p>
+                        <a href="tel:070-2837-6716" class="contact-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.63 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.54 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                            070-2837-6716
+                        </a>
+                        <a href="mailto:j.style2024tt.team@gmail.com" class="contact-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+                            j.style2024tt.team@gmail.com
+                        </a>
                     </div>
                 </div>
                 <div class="map-container reveal">
