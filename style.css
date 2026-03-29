@@ -735,55 +735,152 @@ section {
     position: relative;
     border-radius: 24px;
     overflow: hidden;
-    height: 480px;
     border: 1px solid var(--border-subtle);
+    background: var(--card-bg);
+    backdrop-filter: blur(16px);
+    padding: 48px 40px 44px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
     transition: var(--transition);
+    cursor: default;
+}
+
+.course-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse 70% 55% at 50% 30%, rgba(255, 107, 157, 0.10) 0%, transparent 70%);
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+    opacity: 0;
 }
 
 .course-card:hover {
-    transform: translateY(-6px);
+    transform: translateY(-8px);
     border-color: var(--border-accent);
-    box-shadow: var(--shadow-card);
+    box-shadow: 0 32px 80px rgba(0, 0, 0, 0.5), 0 0 40px rgba(255, 107, 157, 0.08);
 }
 
-.course-img {
-    height: 100%;
-    background: var(--secondary-navy);
+.course-card:hover::before {
+    opacity: 1;
 }
 
-.course-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.6s ease;
+.course-num {
+    font-family: var(--font-display);
+    font-size: 5rem;
+    line-height: 1;
+    letter-spacing: 4px;
+    background: linear-gradient(135deg, rgba(255,175,204,0.15) 0%, rgba(255,107,157,0.08) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    margin-bottom: 20px;
+    transition: var(--transition);
 }
 
-.course-card:hover img {
-    transform: scale(1.08);
+.course-card:hover .course-num {
+    background: linear-gradient(135deg, var(--accent-pink) 0%, var(--accent-pink-deep) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+.course-icon-wrap {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.course-icon-wrap::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 107, 157, 0.18) 0%, transparent 70%);
+    transition: transform 0.5s ease, opacity 0.4s ease;
+    opacity: 0.6;
+}
+
+.course-card:hover .course-icon-wrap::before {
+    transform: scale(1.3);
+    opacity: 1;
+}
+
+.course-icon-wrap svg {
+    position: relative;
+    z-index: 1;
+    color: var(--accent-pink);
+    filter: drop-shadow(0 0 12px rgba(255, 107, 157, 0.4));
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.4s ease;
+}
+
+.course-card:hover .course-icon-wrap svg {
+    transform: scale(1.12) rotate(-5deg);
+    filter: drop-shadow(0 0 24px rgba(255, 107, 157, 0.7));
+}
+
+.course-tag {
+    display: inline-block;
+    padding: 4px 14px;
+    background: rgba(255, 107, 157, 0.1);
+    border: 1px solid rgba(255, 107, 157, 0.25);
+    border-radius: 50px;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: var(--accent-pink);
+    text-transform: uppercase;
+    margin-bottom: 14px;
 }
 
 .course-info {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: 48px 40px;
-    background: linear-gradient(to top, rgba(5, 5, 16, 0.98) 30%, rgba(5, 5, 16, 0.6) 70%, transparent);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .course-info h3 {
     font-family: 'Noto Sans JP', sans-serif;
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     font-weight: 900;
-    margin-bottom: 10px;
-    color: var(--accent-pink);
+    margin-bottom: 12px;
+    color: var(--text-white);
+    line-height: 1.3;
 }
 
 .course-info p {
     font-size: 0.9rem;
-    line-height: 1.7;
+    line-height: 1.8;
     color: var(--text-gray);
+    max-width: 340px;
+    margin-bottom: 28px;
 }
+
+.course-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--accent-pink);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: gap 0.2s ease;
+}
+
+.course-link svg {
+    transition: transform 0.2s ease;
+}
+
+.course-link:hover { gap: 12px; }
+.course-link:hover svg { transform: translateX(3px); }
 
 /* ===== STAFF ===== */
 .staff-section {
