@@ -18,8 +18,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Opening Animation ---
     const openCanvas = document.getElementById('opening-canvas');
     if (openCanvas) {
-        const openCtx = openCanvas.getContext('2d');
         const mainOverlay = document.getElementById('opening-overlay');
+
+        // 同セッション内で既に見ていたらスキップ
+        if (sessionStorage.getItem('opening-seen')) {
+            mainOverlay.style.display = 'none';
+            document.body.classList.remove('loading');
+        } else {
+            sessionStorage.setItem('opening-seen', '1');
+
+        const openCtx = openCanvas.getContext('2d');
         const heroContent = document.querySelector('.hero-content');
         const body = document.body;
 
@@ -149,6 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
         window.addEventListener('resize', initOpening);
         initOpening();
         animateOpening();
+        } // end else (opening-seen)
     }
 
     // --- Hero Sakura Background ---
