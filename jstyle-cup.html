@@ -15,7 +15,7 @@
     <!-- Styles & Fonts -->
     <link rel="stylesheet" href="style.css">
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Noto+Sans+JP:wght@400;700;900&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;700;900&family=Noto+Sans+JP:wght@400;700;900&display=swap"
         rel="stylesheet">
     <style>
         /* J.STYLE杯 専用スタイル */
@@ -594,7 +594,7 @@
     <header class="main-header">
         <div class="header-inner">
             <a href="index.html" class="logo" style="text-decoration: none;">J.STYLE</a>
-            <nav class="main-nav">
+            <nav class="main-nav" id="main-nav">
                 <ul>
                     <li><a href="index.html#news">NEWS</a></li>
                     <li><a href="index.html#about">ABOUT</a></li>
@@ -605,6 +605,9 @@
                 </ul>
             </nav>
             <a href="index.html#access" class="cta-button-small">体験申込</a>
+            <button class="hamburger" id="hamburger" aria-label="メニュー">
+                <span></span><span></span><span></span>
+            </button>
         </div>
     </header>
 
@@ -632,17 +635,23 @@
 
             <div class="info-grid container">
                 <div class="info-card reveal">
-                    <span class="info-card-icon">📅</span>
+                    <span class="info-card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                    </span>
                     <h3>開催日</h3>
                     <p>年1〜2回開催<br>詳細は随時お知らせ</p>
                 </div>
                 <div class="info-card reveal">
-                    <span class="info-card-icon">📍</span>
+                    <span class="info-card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    </span>
                     <h3>会場</h3>
                     <p>上越市総合体育館<br>新潟県上越市木田1丁目17-33</p>
                 </div>
                 <div class="info-card reveal">
-                    <span class="info-card-icon">🏓</span>
+                    <span class="info-card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="6"/><line x1="12.5" y1="12.5" x2="20" y2="20"/><circle cx="17.5" cy="17.5" r="2"/></svg>
+                    </span>
                     <h3>対象</h3>
                     <p>小学生〜中学生<br>（各種目・カテゴリ参照）</p>
                 </div>
@@ -688,8 +697,8 @@
                             <tr>
                                 <th>お問い合わせ</th>
                                 <td>
-                                    📞 070-2837-6716<br>
-                                    ✉️ j.style2024tt.team@gmail.com
+                                    070-2837-6716<br>
+                                    j.style2024tt.team@gmail.com
                                 </td>
                             </tr>
                         </table>
@@ -787,7 +796,9 @@
                     </div>
                     <div id="tab-latest" class="tab-content active">
                         <div class="coming-soon-box">
-                            <span class="icon">🏆</span>
+                            <span class="icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2z"/></svg>
+                            </span>
                             <p>第1回 J.STYLE杯の大会結果は、<br>大会終了後にこちらで発表します。<br>開催情報はNEWSをお待ちください。</p>
                         </div>
                     </div>
@@ -811,7 +822,7 @@
                         <a href="tel:070-2837-6716" class="btn btn-outline">電話で問い合わせる</a>
                     </div>
                     <p class="entry-note">
-                        📞 070-2837-6716 ／ ✉️ j.style2024tt.team@gmail.com<br>
+                        070-2837-6716 ／ j.style2024tt.team@gmail.com<br>
                         お問い合わせはお気軽にどうぞ
                     </p>
                 </div>
@@ -839,6 +850,22 @@
     </footer>
 
     <script>
+        // ハンバーガーメニュー
+        const hamburger = document.getElementById('hamburger');
+        const mainNav = document.getElementById('main-nav');
+        if (hamburger && mainNav) {
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('open');
+                mainNav.classList.toggle('open');
+            });
+            mainNav.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('open');
+                    mainNav.classList.remove('open');
+                });
+            });
+        }
+
         // タブ切り替え
         function switchTab(e, tabId) {
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
