@@ -16,7 +16,7 @@
     <!-- Styles & Fonts -->
     <link rel="stylesheet" href="style.css">
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Noto+Sans+JP:wght@400;700;900&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;700;900&family=Noto+Sans+JP:wght@400;700;900&display=swap"
         rel="stylesheet">
     <!-- JSON-LD -->
     <script type="application/ld+json">
@@ -50,7 +50,7 @@
     <header class="main-header">
         <div class="header-inner">
             <h1 class="logo">J.STYLE</h1>
-            <nav class="main-nav">
+            <nav class="main-nav" id="main-nav">
                 <ul>
                     <li><a href="#news">NEWS</a></li>
                     <li><a href="#about">ABOUT</a></li>
@@ -58,9 +58,13 @@
                     <li><a href="#staff">STAFF</a></li>
                     <li><a href="#access">ACCESS</a></li>
                     <li><a href="jstyle-cup.html" style="color: var(--accent-pink);">J.STYLE杯</a></li>
+                    <li><a href="contact.html">お問い合わせ</a></li>
                 </ul>
             </nav>
-            <a href="#access" class="cta-button-small">体験申込</a>
+            <a href="contact.html" class="cta-button-small">体験申込</a>
+            <button class="hamburger" id="hamburger" aria-label="メニュー">
+                <span></span><span></span><span></span>
+            </button>
         </div>
     </header>
 
@@ -74,7 +78,7 @@
                 <p class="description reveal">J.STYLEは、全国大会などで活躍できる選手の育成と、卓球を通じた人間形成を目指すジュニアチームです。</p>
                 <div class="hero-actions reveal">
                     <a href="#courses" class="btn btn-primary">コース紹介を見る</a>
-                    <a href="#access" class="btn btn-outline">お問い合わせ</a>
+                    <a href="contact.html" class="btn btn-outline">お問い合わせ</a>
                 </div>
             </div>
             <div class="hero-scroll">SCROLL</div>
@@ -170,15 +174,21 @@
                         <h3>上越市総合体育館</h3>
                         <p>〒943-0805 新潟県上越市木田1丁目17-33</p>
                         <div class="schedule-mini">
-                            <p>【練習日】 月・水・金 (18:00 - 21:00)</p>
+                            <p>【練習日】 月・水・金 (19:00 - 21:00)</p>
                             <p>【週末】 土曜日　9:00~12:00 他大会・遠征など</p>
                         </div>
                         <a href="https://www.google.com/maps/place/%E4%B8%8A%E8%B6%8A%E5%B8%82%E7%B7%8F%E5%90%88%E4%BD%93%E8%82%B2%E9%A4%A8/@37.146295,138.236044,17z/data=!3m1!4b1!4m6!3m5!1s0x5ff67778c9a4b21f:0x347e4f1d96a37b6d!8m2!3d37.146295!4d138.236044!16s%2Fg%2F1tfxxwmj"
                             class="btn btn-outline" target="_blank">Googleマップで開く</a>
                     </div>
                     <div class="contact-mini reveal">
-                        <p>📞 070-2837-6716</p>
-                        <p>✉️ j.style2024tt.team@gmail.com</p>
+                        <a href="tel:070-2837-6716" class="contact-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.63 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.54 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                            070-2837-6716
+                        </a>
+                        <a href="mailto:j.style2024tt.team@gmail.com" class="contact-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+                            j.style2024tt.team@gmail.com
+                        </a>
                     </div>
                 </div>
                 <div class="map-container reveal">
@@ -201,8 +211,8 @@
                 <div class="footer-links">
                     <ul>
                         <li><a href="#about">団体概要</a></li>
-                        <li><a href="#">プライバシーポリシー</a></li>
-                        <li><a href="#">お問い合わせ</a></li>
+                        <li><a href="jstyle-cup.html">J.STYLE杯</a></li>
+                        <li><a href="contact.html">お問い合わせ</a></li>
                     </ul>
                 </div>
             </div>
@@ -211,6 +221,22 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const mainNav = document.getElementById('main-nav');
+        if (hamburger && mainNav) {
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('open');
+                mainNav.classList.toggle('open');
+            });
+            mainNav.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('open');
+                    mainNav.classList.remove('open');
+                });
+            });
+        }
+    </script>
 </body>
 
 </html>
