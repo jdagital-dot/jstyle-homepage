@@ -1249,3 +1249,47 @@ section {
     letter-spacing: 1.5px;
     text-transform: uppercase;
 }
+
+/* ===== FOCUS STATES (Accessibility) ===== */
+:focus-visible {
+    outline: 2px solid var(--accent-pink);
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+.btn:focus-visible,
+.cta-button-small:focus-visible,
+.hamburger:focus-visible {
+    outline: 2px solid var(--accent-pink);
+    outline-offset: 3px;
+}
+
+.main-nav a:focus-visible {
+    outline: 2px solid var(--accent-pink);
+    outline-offset: 4px;
+    border-radius: 3px;
+}
+
+/* ===== MAP IFRAME RESPONSIVE ===== */
+.map-container iframe {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* ===== ERROR COLOR ===== */
+:root {
+    --color-error: #ff6b82;
+}
+
+/* ===== FOOTER LOGO LINK ===== */
+.main-footer .logo {
+    display: block;
+    margin-bottom: 12px;
+    text-decoration: none;
+}
+
+/* ===== NEWS CARD CURSOR ===== */
+.news-card[role="button"] {
+    cursor: pointer;
+}
