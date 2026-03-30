@@ -788,62 +788,89 @@
         <section id="schedule">
             <div class="container">
                 <h2 class="section-title reveal">当日スケジュール</h2>
-                <div style="display:grid; grid-template-columns:1fr 1fr; gap:32px;" class="reveal">
+                <p class="reveal" style="color:var(--text-gray); margin-top:-40px; margin-bottom:48px; font-size:0.9rem;">
+                    各日、全種目が同時進行で行われます。
+                </p>
 
-                    <!-- Day 1 -->
-                    <div style="background:var(--card-bg); border:1px solid var(--border-subtle); border-radius:20px; padding:36px 32px; backdrop-filter:blur(12px);">
-                        <div style="font-family:var(--font-display); font-size:2.4rem; color:var(--accent-pink); letter-spacing:3px; margin-bottom:4px;">12.26</div>
-                        <div style="font-size:0.75rem; font-weight:800; letter-spacing:2px; color:var(--text-dim); margin-bottom:28px;">DAY 1</div>
-                        <div class="timeline">
-                            <div class="timeline-item">
-                                <div class="timeline-date">①</div>
-                                <div class="timeline-title">小学生混合1年以下の部</div>
-                                <div class="timeline-desc">予選リーグ → 1位T（5G） / 下位T（3G）</div>
-                            </div>
-                            <div class="timeline-item">
-                                <div class="timeline-date">②</div>
-                                <div class="timeline-title">男女カブの部</div>
-                                <div class="timeline-desc">予選リーグ → 1位T（5G） / 下位T（3G）</div>
-                            </div>
-                            <div class="timeline-item">
-                                <div class="timeline-date">③</div>
-                                <div class="timeline-title">男女カデットの部</div>
-                                <div class="timeline-desc">予選リーグ → 1位T（5G） / 下位T（3G）</div>
-                            </div>
-                        </div>
+                <style>
+                    .day-block { margin-bottom: 56px; }
+                    .day-label { display:flex; align-items:baseline; gap:16px; margin-bottom:24px; }
+                    .day-label .date { font-family:var(--font-display); font-size:2.4rem; color:var(--accent-pink); letter-spacing:3px; line-height:1; }
+                    .day-label .sub { font-size:0.75rem; font-weight:800; letter-spacing:2px; color:var(--text-dim); text-transform:uppercase; }
+                    .events-row { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:28px; }
+                    .event-badge { padding:8px 16px; background:rgba(255,175,204,0.07); border:1px solid var(--border-accent); border-radius:50px; font-size:0.85rem; font-weight:700; color:var(--text-white); white-space:nowrap; }
+                    .flow-bar { display:flex; align-items:center; gap:0; background:var(--card-bg); border:1px solid var(--border-subtle); border-radius:16px; padding:20px 28px; backdrop-filter:blur(12px); flex-wrap:wrap; gap:8px; }
+                    .flow-step { display:flex; flex-direction:column; align-items:center; text-align:center; min-width:100px; }
+                    .flow-step .step-label { font-size:0.68rem; font-weight:800; letter-spacing:1.5px; color:var(--accent-pink); text-transform:uppercase; margin-bottom:4px; }
+                    .flow-step .step-detail { font-size:0.8rem; color:var(--text-dim); }
+                    .flow-arrow { color:var(--border-accent); font-size:1.2rem; margin: 0 4px; flex-shrink:0; }
+                    .flow-split { display:flex; flex-direction:column; gap:6px; }
+                    .flow-split-item { padding:6px 14px; border-radius:8px; font-size:0.78rem; font-weight:700; text-align:center; }
+                    .flow-split-item.top { background:rgba(255,107,157,0.12); border:1px solid rgba(255,107,157,0.3); color:var(--accent-pink); }
+                    .flow-split-item.lower { background:rgba(255,255,255,0.04); border:1px solid var(--border-subtle); color:var(--text-gray); }
+                    @media (max-width:600px) {
+                        .flow-bar { flex-direction:column; align-items:flex-start; }
+                        .flow-arrow { transform:rotate(90deg); }
+                    }
+                </style>
+
+                <!-- Day 1 -->
+                <div class="day-block reveal">
+                    <div class="day-label">
+                        <span class="date">12.26</span>
+                        <span class="sub">Day 1 &mdash; 全3種目 同時進行</span>
                     </div>
-
-                    <!-- Day 2 -->
-                    <div style="background:var(--card-bg); border:1px solid var(--border-subtle); border-radius:20px; padding:36px 32px; backdrop-filter:blur(12px);">
-                        <div style="font-family:var(--font-display); font-size:2.4rem; color:var(--accent-pink); letter-spacing:3px; margin-bottom:4px;">12.27</div>
-                        <div style="font-size:0.75rem; font-weight:800; letter-spacing:2px; color:var(--text-dim); margin-bottom:28px;">DAY 2</div>
-                        <div class="timeline">
-                            <div class="timeline-item">
-                                <div class="timeline-date">④</div>
-                                <div class="timeline-title">男女バンビの部</div>
-                                <div class="timeline-desc">予選リーグ → 1位T（5G） / 下位T（3G）</div>
-                            </div>
-                            <div class="timeline-item">
-                                <div class="timeline-date">⑤</div>
-                                <div class="timeline-title">男女ホープスの部</div>
-                                <div class="timeline-desc">予選リーグ → 1位T（5G） / 下位T（3G）</div>
-                            </div>
-                            <div class="timeline-item">
-                                <div class="timeline-date">⑥</div>
-                                <div class="timeline-title">男女一般の部</div>
-                                <div class="timeline-desc">予選リーグ → 1位T（5G） / 下位T（3G）</div>
-                            </div>
+                    <div class="events-row">
+                        <span class="event-badge">① 小学生混合1年以下の部</span>
+                        <span class="event-badge">② 男女カブの部</span>
+                        <span class="event-badge">③ 男女カデットの部</span>
+                    </div>
+                    <div class="flow-bar">
+                        <div class="flow-step">
+                            <span class="step-label">予選リーグ</span>
+                            <span class="step-detail">5ゲームマッチ</span>
+                        </div>
+                        <span class="flow-arrow">→</span>
+                        <div class="flow-split">
+                            <div class="flow-split-item top">1位トーナメント　5ゲームマッチ</div>
+                            <div class="flow-split-item lower">下位トーナメント　3ゲームマッチ</div>
+                        </div>
+                        <span class="flow-arrow">→</span>
+                        <div class="flow-step">
+                            <span class="step-label">決勝</span>
+                            <span class="step-detail">各種目 表彰</span>
                         </div>
                     </div>
                 </div>
 
-                <style>
-                @media (max-width: 768px) {
-                    #schedule .container > .reveal > div:first-child,
-                    #schedule .container > .reveal > div:last-child { min-width: 0; }
-                    #schedule .container > .reveal { grid-template-columns: 1fr !important; }
-                }
-                </style>
+                <!-- Day 2 -->
+                <div class="day-block reveal">
+                    <div class="day-label">
+                        <span class="date">12.27</span>
+                        <span class="sub">Day 2 &mdash; 全3種目 同時進行</span>
+                    </div>
+                    <div class="events-row">
+                        <span class="event-badge">④ 男女バンビの部</span>
+                        <span class="event-badge">⑤ 男女ホープスの部</span>
+                        <span class="event-badge">⑥ 男女一般の部</span>
+                    </div>
+                    <div class="flow-bar">
+                        <div class="flow-step">
+                            <span class="step-label">予選リーグ</span>
+                            <span class="step-detail">5ゲームマッチ</span>
+                        </div>
+                        <span class="flow-arrow">→</span>
+                        <div class="flow-split">
+                            <div class="flow-split-item top">1位トーナメント　5ゲームマッチ</div>
+                            <div class="flow-split-item lower">下位トーナメント　3ゲームマッチ</div>
+                        </div>
+                        <span class="flow-arrow">→</span>
+                        <div class="flow-step">
+                            <span class="step-label">決勝</span>
+                            <span class="step-detail">各種目 表彰</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
