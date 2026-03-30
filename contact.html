@@ -313,7 +313,7 @@
         .field-error {
             display: none;
             font-size: 0.78rem;
-            color: #ff6b6b;
+            color: var(--color-error, #ff6b82);
             margin-top: 6px;
         }
 
@@ -324,7 +324,7 @@
         .form-input.error,
         .form-select.error,
         .form-textarea.error {
-            border-color: #ff6b6b;
+            border-color: var(--color-error, #ff6b82);
         }
     </style>
 </head>
@@ -332,7 +332,7 @@
 <body>
     <header class="main-header" style="background: rgba(5, 5, 16, 0.95);">
         <div class="header-inner">
-            <h1 class="logo"><a href="index.html" style="text-decoration:none; background: inherit; -webkit-text-fill-color: transparent;">J.STYLE</a></h1>
+            <a href="index.html" class="logo">J.STYLE</a>
             <nav class="main-nav" id="main-nav">
                 <ul>
                     <li><a href="index.html#news">NEWS</a></li>
