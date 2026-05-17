@@ -13,7 +13,17 @@
     <meta property="og:description" content="未来のトップアスリートを、ここ上越から。J.STYLE。">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://jstyle-tt.jp/">
+    <meta property="og:image" content="https://jstyle-tt.jp/assets/hero.png">
+    <meta property="og:locale" content="ja_JP">
+    <meta property="og:site_name" content="J.STYLE | 上越市の卓球ジュニアチーム">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="J.STYLE | 上越市の卓球ジュニアチーム">
+    <meta name="twitter:description" content="未来のトップアスリートを、ここ上越から。J.STYLE。">
+    <meta name="twitter:image" content="https://jstyle-tt.jp/assets/hero.png">
     <!-- Styles & Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="style.css">
     <link
         href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;700;900&family=Noto+Sans+JP:wght@400;700;900&display=swap"
@@ -24,7 +34,13 @@
       "@context": "https://schema.org",
       "@type": "SportsOrganization",
       "name": "J.STYLE",
+      "alternateName": "ジェイスタイル",
+      "description": "新潟県上越市の卓球ジュニアチーム。初心者から上級者まで、思考力・努力・人間力を軸に選手を育成。",
       "url": "https://jstyle-tt.jp/",
+      "telephone": "070-2837-6716",
+      "email": "j.style2024tt.team@gmail.com",
+      "sport": "卓球",
+      "areaServed": "上越市",
       "address": {
         "@type": "PostalAddress",
         "postalCode": "943-0805",
@@ -32,7 +48,21 @@
         "addressRegion": "新潟県",
         "streetAddress": "木田1丁目17-33",
         "addressCountry": "JP"
-      }
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Wednesday", "Friday"],
+          "opens": "19:00",
+          "closes": "21:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "09:00",
+          "closes": "12:00"
+        }
+      ]
     }
     </script>
 </head>
@@ -49,7 +79,7 @@
 
     <header class="main-header">
         <div class="header-inner">
-            <h1 class="logo">J.STYLE</h1>
+            <h1 class="logo">J.STYLE<span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap"> | 上越市の卓球ジュニアチーム</span></h1>
             <nav class="main-nav" id="main-nav">
                 <ul>
                     <li><a href="#news">NEWS</a></li>
@@ -231,6 +261,10 @@
                 <div class="footer-brand">
                     <a href="index.html" class="logo">J.STYLE</a>
                     <p>Future of Table Tennis</p>
+                    <address style="font-style:normal;font-size:0.78rem;color:var(--text-dim);margin-top:10px;line-height:1.7;">
+                        〒943-0805 新潟県上越市木田1丁目17-33<br>
+                        <a href="tel:070-2837-6716" style="color:inherit;">070-2837-6716</a>
+                    </address>
                 </div>
                 <div class="footer-links">
                     <ul>
