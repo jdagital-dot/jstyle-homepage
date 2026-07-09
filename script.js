@@ -6,24 +6,30 @@ document.addEventListener('DOMContentLoaded', () => {
         hamburger.addEventListener('click', () => {
             hamburger.classList.toggle('open');
             mainNav.classList.toggle('open');
+            hamburger.setAttribute('aria-expanded', mainNav.classList.contains('open'));
         });
         mainNav.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 hamburger.classList.remove('open');
                 mainNav.classList.remove('open');
+                hamburger.setAttribute('aria-expanded', 'false');
             });
         });
     }
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     // --- Opening Animation ---
     const openCanvas = document.getElementById('opening-canvas');
     if (openCanvas) {
         const mainOverlay = document.getElementById('opening-overlay');
 
-        // 同セッション内で既に見ていたらスキップ
-        if (sessionStorage.getItem('opening-seen')) {
+        // 同セッション内で既に見ていた場合・reduced-motion設定時はスキップ
+        if (sessionStorage.getItem('opening-seen') || prefersReducedMotion) {
             mainOverlay.style.display = 'none';
             document.body.classList.remove('loading');
+            const heroContentEl = document.querySelector('.hero-content');
+            if (heroContentEl) heroContentEl.classList.add('loaded');
         } else {
             sessionStorage.setItem('opening-seen', '1');
 
@@ -129,16 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const brandOverlay = document.querySelector('.branding-overlay-content');
                     if (brandOverlay) brandOverlay.classList.add('visible');
 
-                    setTimeout(() => {
-                        animationPhase = 'done';
-                        mainOverlay.style.opacity = '0';
-                        if (heroContent) heroContent.classList.add('loaded');
-                        body.classList.remove('loading');
-
-                        setTimeout(() => {
-                            mainOverlay.style.display = 'none';
-                        }, 1000);
-                    }, 4000);
+                    setTimeout(finishOpening, 1800);
                 }
             } else if (animationPhase === 'blast') {
                 for (let i = sakuraParticles.length - 1; i >= 0; i--) {
@@ -154,6 +151,20 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
+        function finishOpening() {
+            if (animationPhase === 'done') return;
+            animationPhase = 'done';
+            mainOverlay.style.opacity = '0';
+            if (heroContent) heroContent.classList.add('loaded');
+            body.classList.remove('loading');
+            setTimeout(() => {
+                mainOverlay.style.display = 'none';
+            }, 1000);
+        }
+
+        // タップ / クリックでスキップ
+        mainOverlay.addEventListener('click', finishOpening);
+
         window.addEventListener('resize', initOpening);
         initOpening();
         animateOpening();
@@ -162,7 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Hero Sakura Background ---
     const sakuraCanvas = document.getElementById('sakura-canvas');
-    if (sakuraCanvas) {
+    if (sakuraCanvas && !prefersReducedMotion) {
         const sCtx = sakuraCanvas.getContext('2d');
         let sWidth, sHeight, backgroundParticles;
 
@@ -258,19 +269,20 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --- microCMS Integration ---
-    // ここを microCMS の管理画面 URL の「xxxxx.microcms.io」の xxxxx の部分に書き換えてください
-    const MICROCMS_SERVICE_DOMAIN = 'j-style-news'; // ← ここを実際のサービス名に変更
-    const MICROCMS_API_KEY = 'nuAX2PFCPxRVLB5iRw37iYoQQ5ugY6ncWLHZ'; // 設定済みのAPIキー
+    // 接続設定は config.js（全ページ共通）にあります
+    const { serviceDomain: MICROCMS_SERVICE_DOMAIN, apiKey: MICROCMS_API_KEY } = window.JSTYLE_CONFIG.microcms;
     const newsContainer = document.getElementById('news-container');
+
+    function escapeHtml(str) {
+        return String(str ?? '')
+            .replaceAll('&', '&amp;')
+            .replaceAll('<', '&lt;')
+            .replaceAll('>', '&gt;')
+            .replaceAll('"', '&quot;');
+    }
 
     async function fetchNews() {
         if (!newsContainer) return;
-
-        // API設定がまだの場合はダミーデータを表示
-        if (MICROCMS_SERVICE_DOMAIN === 'YOUR_SERVICE_DOMAIN') {
-            renderDummyNews();
-            return;
-        }
 
         try {
             const response = await fetch(
@@ -281,11 +293,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 }
             );
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
             const data = await response.json();
             renderNews(data.contents);
         } catch (error) {
             console.error('ニュースの取得に失敗しました:', error);
-            newsContainer.innerHTML = '<p style="color:red; grid-column:1/-1; text-align:center;">ニュースの読み込みに失敗しました。</p>';
+            newsContainer.innerHTML = '<p style="color:var(--color-error); grid-column:1/-1; text-align:center;">ニュースの読み込みに失敗しました。</p>';
         }
     }
 
@@ -300,24 +313,34 @@ document.addEventListener('DOMContentLoaded', () => {
             const card = document.createElement('article');
             card.className = 'news-card reveal';
             card.style.cursor = 'pointer';
+            card.setAttribute('tabindex', '0');
+            card.setAttribute('role', 'button');
+            card.setAttribute('aria-label', content.title);
 
             // 画像がある場合のみ表示
             const imageHtml = content.image
-                ? `<div class="news-image"><img src="${content.image.url}" alt="${content.title}"></div>`
+                ? `<div class="news-image"><img src="${escapeHtml(content.image.url)}" alt="${escapeHtml(content.title)}" loading="lazy" width="400" height="225"></div>`
                 : '';
 
             card.innerHTML = `
                 ${imageHtml}
                 <div class="news-content">
                     <span class="news-date">${formattedDate}</span>
-                    <span class="news-tag">${content.category || 'お知らせ'}</span>
-                    <h3 class="news-title">${content.title}</h3>
+                    <span class="news-tag">${escapeHtml(content.category || 'お知らせ')}</span>
+                    <h3 class="news-title">${escapeHtml(content.title)}</h3>
                 </div>
             `;
 
-            card.addEventListener('click', () => {
+            const goToDetail = () => {
                 // ポップアップではなく詳細ページへ遷移（IDを渡す）
-                window.location.href = `news-detail.html?id=${content.id}`;
+                window.location.href = `news-detail.html?id=${encodeURIComponent(content.id)}`;
+            };
+            card.addEventListener('click', goToDetail);
+            card.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    goToDetail();
+                }
             });
 
             newsContainer.appendChild(card);

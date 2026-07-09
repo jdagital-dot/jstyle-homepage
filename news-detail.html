@@ -5,25 +5,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NEWS | J.STYLE</title>
+    <meta name="description" content="新潟県上越市の卓球ジュニアチーム J.STYLEのニュース記事。大会結果、練習情報、チームのお知らせをお届けします。">
+    <!-- OGP -->
+    <meta property="og:title" content="NEWS | J.STYLE 上越市の卓球チーム">
+    <meta property="og:description" content="新潟県上越市の卓球ジュニアチーム J.STYLEのニュース記事。">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="https://jstyle-tt.jp/assets/hero.png">
+    <meta property="og:locale" content="ja_JP">
+    <meta property="og:site_name" content="J.STYLE | 上越市の卓球ジュニアチーム">
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Noto+Sans+JP:wght@400;700;900&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;700;900&family=Noto+Sans+JP:wght@400;700;900&display=swap"
         rel="stylesheet">
 </head>
 
 <body class="news-detail-page">
     <header class="main-header" style="background: rgba(5, 5, 16, 0.95);">
         <div class="header-inner">
-            <h1 class="logo"><a href="index.html" style="color: inherit; text-decoration: none;">J.STYLE</a></h1>
-            <nav class="main-nav">
+            <a href="index.html" class="logo" style="text-decoration: none;">J.STYLE</a>
+            <nav class="main-nav" id="main-nav">
                 <ul>
                     <li><a href="index.html#news">NEWS</a></li>
                     <li><a href="index.html#about">ABOUT</a></li>
                     <li><a href="index.html#courses">COURSES</a></li>
                     <li><a href="index.html#staff">STAFF</a></li>
                     <li><a href="index.html#access">ACCESS</a></li>
+                    <li><a href="jstyle-cup.html" style="color: var(--accent-pink);">J.STYLE杯</a></li>
+                    <li><a href="contact.html">お問い合わせ</a></li>
                 </ul>
             </nav>
+            <a href="contact.html" class="cta-button-small">体験申込</a>
+            <button class="hamburger" id="hamburger" aria-label="メニュー" aria-controls="main-nav" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
         </div>
     </header>
 
@@ -34,7 +51,7 @@
         </div>
 
         <div style="margin-top: 60px; text-align: center;">
-            <a href="index.html#news" class="btn btn-outline">ニュース一覧に戻る</a>
+            <a href="news-list.html" class="btn btn-outline">ニュース一覧に戻る</a>
         </div>
     </main>
 
@@ -44,9 +61,35 @@
         </div>
     </footer>
 
+    <script src="config.js"></script>
     <script>
-        const MICROCMS_SERVICE_DOMAIN = 'j-style-news'; // あなたのサービスドメイン
-        const MICROCMS_API_KEY = 'nuAX2PFCPxRVLB5iRw37iYoQQ5ugY6ncWLHZ'; // あなたのAPIキー
+        // ハンバーガーメニュー
+        const hamburger = document.getElementById('hamburger');
+        const mainNav = document.getElementById('main-nav');
+        if (hamburger && mainNav) {
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('open');
+                mainNav.classList.toggle('open');
+                hamburger.setAttribute('aria-expanded', mainNav.classList.contains('open'));
+            });
+            mainNav.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('open');
+                    mainNav.classList.remove('open');
+                    hamburger.setAttribute('aria-expanded', 'false');
+                });
+            });
+        }
+
+        const { serviceDomain: MICROCMS_SERVICE_DOMAIN, apiKey: MICROCMS_API_KEY } = window.JSTYLE_CONFIG.microcms;
+
+        function escapeHtml(str) {
+            return String(str ?? '')
+                .replaceAll('&', '&amp;')
+                .replaceAll('<', '&lt;')
+                .replaceAll('>', '&gt;')
+                .replaceAll('"', '&quot;');
+        }
 
         async function fetchDetail() {
             // URLから ?id=xxxxx の部分を取得
@@ -54,22 +97,25 @@
             const contentId = params.get('id');
 
             if (!contentId) {
-                window.location.href = 'index.html';
+                window.location.href = 'news-list.html';
                 return;
             }
 
             try {
                 const response = await fetch(
-                    `https://${MICROCMS_SERVICE_DOMAIN}.microcms.io/api/v1/news/${contentId}`,
+                    `https://${MICROCMS_SERVICE_DOMAIN}.microcms.io/api/v1/news/${encodeURIComponent(contentId)}`,
                     {
                         headers: { 'X-MICROCMS-API-KEY': MICROCMS_API_KEY }
                     }
                 );
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
                 const data = await response.json();
                 renderDetail(data);
             } catch (error) {
                 console.error('取得失敗:', error);
-                document.getElementById('news-content-area').innerHTML = '<p style="color:red;">記事の読み込みに失敗しました。</p>';
+                document.getElementById('news-content-area').innerHTML =
+                    '<p style="text-align:center; color:var(--color-error);">記事が見つからないか、読み込みに失敗しました。</p>';
+                document.getElementById('news-content-area').classList.add('active');
             }
         }
 
@@ -81,13 +127,13 @@
             document.title = `${data.title} | J.STYLE`;
 
             const imgHtml = data.image
-                ? `<img src="${data.image.url}" style="width:100%; border-radius:20px; margin-bottom:40px;" alt="${data.title}">`
+                ? `<img src="${escapeHtml(data.image.url)}" style="width:100%; border-radius:20px; margin-bottom:40px;" alt="${escapeHtml(data.title)}">`
                 : '';
 
             document.getElementById('news-content-area').innerHTML = `
                 <div class="modal-header">
                     <span class="modal-date">${formattedDate}</span>
-                    <h1 class="modal-title" style="font-size: 2.5rem; margin: 15px 0 30px;">${data.title}</h1>
+                    <h1 class="modal-title" style="font-size: 2.5rem; margin: 15px 0 30px;">${escapeHtml(data.title)}</h1>
                 </div>
                 ${imgHtml}
                 <div class="modal-body" style="font-size: 1.1rem; line-height: 2;">

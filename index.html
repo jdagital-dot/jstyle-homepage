@@ -21,6 +21,8 @@
     <meta name="twitter:title" content="J.STYLE | 上越市の卓球ジュニアチーム">
     <meta name="twitter:description" content="未来のトップアスリートを、ここ上越から。J.STYLE。">
     <meta name="twitter:image" content="https://jstyle-tt.jp/assets/hero.png">
+    <!-- Icons -->
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
     <!-- Styles & Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -72,9 +74,10 @@
     <div id="opening-overlay">
         <canvas id="opening-canvas"></canvas>
         <div class="branding-overlay-content">
-            <h1 class="opening-logo">J.STYLE<span class="underline"></span></h1>
+            <p class="opening-logo">J.STYLE<span class="underline"></span></p>
             <p class="opening-subtitle">Future of Table Tennis</p>
         </div>
+        <p class="opening-skip">Tap to skip</p>
     </div>
 
     <header class="main-header">
@@ -92,7 +95,7 @@
                 </ul>
             </nav>
             <a href="contact.html" class="cta-button-small">体験申込</a>
-            <button class="hamburger" id="hamburger" aria-label="メニュー">
+            <button class="hamburger" id="hamburger" aria-label="メニュー" aria-controls="main-nav" aria-expanded="false">
                 <span></span><span></span><span></span>
             </button>
         </div>
@@ -278,6 +281,7 @@
         </div>
     </footer>
 
+    <script src="config.js"></script>
     <script src="script.js"></script>
 </body>
 

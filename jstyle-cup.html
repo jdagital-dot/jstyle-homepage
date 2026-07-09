@@ -69,6 +69,7 @@
     ]
     </script>
     <!-- Styles & Fonts -->
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="style.css">
@@ -552,6 +553,24 @@
             display: none;
         }
 
+        /* モバイルで先が見切れている＝横スクロールできることを示すフェード */
+        .page-nav::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 48px;
+            background: linear-gradient(to left, rgba(5, 5, 16, 0.95), transparent);
+            pointer-events: none;
+        }
+
+        @media (min-width: 900px) {
+            .page-nav::after {
+                display: none;
+            }
+        }
+
         .page-nav-link {
             padding: 18px 24px;
             color: var(--text-gray);
@@ -663,7 +682,7 @@
                 </ul>
             </nav>
             <a href="contact.html" class="cta-button-small">体験申込</a>
-            <button class="hamburger" id="hamburger" aria-label="メニュー">
+            <button class="hamburger" id="hamburger" aria-label="メニュー" aria-controls="main-nav" aria-expanded="false">
                 <span></span><span></span><span></span>
             </button>
         </div>
@@ -1007,11 +1026,13 @@
             hamburger.addEventListener('click', () => {
                 hamburger.classList.toggle('open');
                 mainNav.classList.toggle('open');
+                hamburger.setAttribute('aria-expanded', mainNav.classList.contains('open'));
             });
             mainNav.querySelectorAll('a').forEach(link => {
                 link.addEventListener('click', () => {
                     hamburger.classList.remove('open');
                     mainNav.classList.remove('open');
+                    hamburger.setAttribute('aria-expanded', 'false');
                 });
             });
         }

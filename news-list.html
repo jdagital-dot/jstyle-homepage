@@ -41,6 +41,7 @@
       ]
     }
     </script>
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="style.css">
@@ -131,7 +132,7 @@
                 </ul>
             </nav>
             <a href="contact.html" class="cta-button-small">体験申込</a>
-            <button class="hamburger" id="hamburger" aria-label="メニュー">
+            <button class="hamburger" id="hamburger" aria-label="メニュー" aria-controls="main-nav" aria-expanded="false">
                 <span></span><span></span><span></span>
             </button>
         </div>
@@ -145,7 +146,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
                     <span>NEWS</span>
                 </nav>
-                <h2 class="section-title" style="margin-bottom: 0;">ALL NEWS</h2>
+                <h1 class="section-title" style="margin-bottom: 0;">ALL NEWS</h1>
             </div>
         </section>
 
@@ -184,6 +185,7 @@
         </div>
     </footer>
 
+    <script src="config.js"></script>
     <script>
         // ハンバーガーメニュー
         const hamburger = document.getElementById('hamburger');
@@ -192,18 +194,27 @@
             hamburger.addEventListener('click', () => {
                 hamburger.classList.toggle('open');
                 mainNav.classList.toggle('open');
+                hamburger.setAttribute('aria-expanded', mainNav.classList.contains('open'));
             });
             mainNav.querySelectorAll('a').forEach(link => {
                 link.addEventListener('click', () => {
                     hamburger.classList.remove('open');
                     mainNav.classList.remove('open');
+                    hamburger.setAttribute('aria-expanded', 'false');
                 });
             });
         }
 
-        const MICROCMS_SERVICE_DOMAIN = 'j-style-news';
-        const MICROCMS_API_KEY = 'nuAX2PFCPxRVLB5iRw37iYoQQ5ugY6ncWLHZ';
+        const { serviceDomain: MICROCMS_SERVICE_DOMAIN, apiKey: MICROCMS_API_KEY } = window.JSTYLE_CONFIG.microcms;
         const newsContainer = document.getElementById('all-news-container');
+
+        function escapeHtml(str) {
+            return String(str ?? '')
+                .replaceAll('&', '&amp;')
+                .replaceAll('<', '&lt;')
+                .replaceAll('>', '&gt;')
+                .replaceAll('"', '&quot;');
+        }
 
         async function fetchAllNews() {
             try {
@@ -211,6 +222,7 @@
                     `https://${MICROCMS_SERVICE_DOMAIN}.microcms.io/api/v1/news?limit=50`,
                     { headers: { 'X-MICROCMS-API-KEY': MICROCMS_API_KEY } }
                 );
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
                 const data = await response.json();
                 renderNews(data.contents);
             } catch (error) {
@@ -246,24 +258,26 @@
                 card.setAttribute('aria-label', content.title);
 
                 const imageHtml = content.image
-                    ? `<div class="news-image"><img src="${content.image.url}" alt="${content.title}" loading="lazy" width="400" height="225"></div>`
+                    ? `<div class="news-image"><img src="${escapeHtml(content.image.url)}" alt="${escapeHtml(content.title)}" loading="lazy" width="400" height="225"></div>`
                     : '';
 
                 card.innerHTML = `
                     ${imageHtml}
                     <div class="news-content">
                         <span class="news-date">${formattedDate}</span>
-                        <span class="news-tag">${content.category || 'お知らせ'}</span>
-                        <h3 class="news-title">${content.title}</h3>
+                        <span class="news-tag">${escapeHtml(content.category || 'お知らせ')}</span>
+                        <h3 class="news-title">${escapeHtml(content.title)}</h3>
                     </div>
                 `;
 
-                card.addEventListener('click', () => {
-                    window.location.href = `news-detail.html?id=${content.id}`;
-                });
+                const goToDetail = () => {
+                    window.location.href = `news-detail.html?id=${encodeURIComponent(content.id)}`;
+                };
+                card.addEventListener('click', goToDetail);
                 card.addEventListener('keydown', (e) => {
                     if (e.key === 'Enter' || e.key === ' ') {
-                        window.location.href = `news-detail.html?id=${content.id}`;
+                        e.preventDefault();
+                        goToDetail();
                     }
                 });
 
