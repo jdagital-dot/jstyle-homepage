@@ -41,6 +41,7 @@
       ]
     }
     </script>
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="style.css">
@@ -381,7 +382,7 @@
                 </ul>
             </nav>
             <a href="contact.html" class="cta-button-small">体験申込</a>
-            <button class="hamburger" id="hamburger" aria-label="メニュー">
+            <button class="hamburger" id="hamburger" aria-label="メニュー" aria-controls="main-nav" aria-expanded="false">
                 <span></span><span></span><span></span>
             </button>
         </div>
@@ -395,7 +396,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
                     <span>お問い合わせ</span>
                 </nav>
-                <h2 class="section-title" style="margin-bottom: 12px;">CONTACT</h2>
+                <h1 class="section-title" style="margin-bottom: 12px;">CONTACT</h1>
                 <p style="color: var(--text-gray); font-size: 1rem; line-height: 1.8;">体験・見学のお申し込みや、コース・大会に関するご質問はこちらから。</p>
             </div>
         </section>
@@ -588,11 +589,13 @@
             hamburger.addEventListener('click', () => {
                 hamburger.classList.toggle('open');
                 mainNav.classList.toggle('open');
+                hamburger.setAttribute('aria-expanded', mainNav.classList.contains('open'));
             });
             mainNav.querySelectorAll('a').forEach(link => {
                 link.addEventListener('click', () => {
                     hamburger.classList.remove('open');
                     mainNav.classList.remove('open');
+                    hamburger.setAttribute('aria-expanded', 'false');
                 });
             });
         }
