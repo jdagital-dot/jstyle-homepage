@@ -67,6 +67,54 @@
       ]
     }
     </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "何歳から入会できますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "年中（幼児）から中学3年生までが対象です。まずは初級・中級者コースからスタートし、レベルに応じて上級コースへ進むことができます。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "卓球未経験でも大丈夫ですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "未経験者も大歓迎です。卓球の楽しさを知るところから、コーチが一人ひとりのレベルに合わせて丁寧に指導します。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "練習はいつ・どこで行っていますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "月・水・金曜日の19:00〜21:00と、土曜日の9:00〜12:00に練習しています。会場は上越市総合体育館（新潟県上越市木田1丁目17-33）です。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "体験レッスンは有料ですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "体験は無料です。お問い合わせフォーム・お電話・メールのいずれかからお気軽にお申し込みください。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "費用はどのくらいかかりますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "月謝は初級・中級者コースが4,000円、上級コースが10,000円です。別途、年会費10,000円をいただいております。"
+          }
+        }
+      ]
+    }
+    </script>
 </head>
 
 <body class="loading">
@@ -198,6 +246,30 @@
             </div>
         </section>
 
+        <!-- Price -->
+        <section id="price" class="price-section">
+            <div class="container">
+                <h2 class="section-title text-center">PRICE</h2>
+                <div class="price-grid">
+                    <div class="price-card reveal">
+                        <span class="course-tag">Beginner / Intermediate</span>
+                        <h3>初級・中級者コース</h3>
+                        <p class="price-amount"><span class="price-yen">月謝</span>4,000<span class="price-unit">円</span></p>
+                    </div>
+                    <div class="price-card reveal">
+                        <span class="course-tag">Advanced</span>
+                        <h3>上級コース</h3>
+                        <p class="price-amount"><span class="price-yen">月謝</span>10,000<span class="price-unit">円</span></p>
+                    </div>
+                </div>
+                <div class="price-notes reveal">
+                    <p>別途、年会費 10,000円をいただいております。</p>
+                    <p>体験レッスンは<strong>無料</strong>です。まずはお気軽にご参加ください。</p>
+                    <a href="contact.html" class="btn btn-primary">無料体験を申し込む</a>
+                </div>
+            </div>
+        </section>
+
         <!-- Players & Staff -->
         <section id="staff" class="staff-section dark-bg">
             <div class="container">
@@ -249,11 +321,38 @@
                     </div>
                 </div>
                 <div class="map-container reveal">
-                    <iframe
+                    <iframe title="上越市総合体育館の地図"
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1590.1706689626353!2d138.23604439999998!3d37.14629499999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5ff67778c9a4b21f%3A0x347e4f1d96a37b6d!2z5LiK6BKK5biC576U5ZCI5L2T6IKy6aSo!5e0!3m2!1sja!2sjp!4v1741080665324!5m2!1sja!2sjp"
                         width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
                         referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section id="faq" class="faq-section dark-bg">
+            <div class="container faq-container">
+                <h2 class="section-title text-center">FAQ</h2>
+                <details class="faq-item reveal">
+                    <summary>何歳から入会できますか？<span class="faq-icon" aria-hidden="true"></span></summary>
+                    <p>年中（幼児）から中学3年生までが対象です。まずは初級・中級者コースからスタートし、レベルに応じて上級コースへ進むことができます。</p>
+                </details>
+                <details class="faq-item reveal">
+                    <summary>卓球未経験でも大丈夫ですか？<span class="faq-icon" aria-hidden="true"></span></summary>
+                    <p>未経験者も大歓迎です。卓球の楽しさを知るところから、コーチが一人ひとりのレベルに合わせて丁寧に指導します。</p>
+                </details>
+                <details class="faq-item reveal">
+                    <summary>練習はいつ・どこで行っていますか？<span class="faq-icon" aria-hidden="true"></span></summary>
+                    <p>月・水・金曜日の19:00〜21:00と、土曜日の9:00〜12:00に練習しています（週末は大会・遠征になる場合もあります）。会場は上越市総合体育館（新潟県上越市木田1丁目17-33）です。</p>
+                </details>
+                <details class="faq-item reveal">
+                    <summary>体験レッスンは有料ですか？<span class="faq-icon" aria-hidden="true"></span></summary>
+                    <p>体験は無料です。お問い合わせフォーム・お電話・メールのいずれかからお気軽にお申し込みください。</p>
+                </details>
+                <details class="faq-item reveal">
+                    <summary>費用はどのくらいかかりますか？<span class="faq-icon" aria-hidden="true"></span></summary>
+                    <p>月謝は初級・中級者コースが4,000円、上級コースが10,000円です。別途、年会費10,000円をいただいております。</p>
+                </details>
             </div>
         </section>
     </main>

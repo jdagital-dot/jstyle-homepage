@@ -24,14 +24,22 @@ document.addEventListener('DOMContentLoaded', () => {
     if (openCanvas) {
         const mainOverlay = document.getElementById('opening-overlay');
 
+        // Cookie全ブロック環境では sessionStorage アクセス自体が例外になるため保護する
+        let openingSeen = false;
+        try {
+            openingSeen = !!sessionStorage.getItem('opening-seen');
+        } catch (e) { /* storage unavailable */ }
+
         // 同セッション内で既に見ていた場合・reduced-motion設定時はスキップ
-        if (sessionStorage.getItem('opening-seen') || prefersReducedMotion) {
+        if (openingSeen || prefersReducedMotion) {
             mainOverlay.style.display = 'none';
             document.body.classList.remove('loading');
             const heroContentEl = document.querySelector('.hero-content');
             if (heroContentEl) heroContentEl.classList.add('loaded');
         } else {
-            sessionStorage.setItem('opening-seen', '1');
+            try {
+                sessionStorage.setItem('opening-seen', '1');
+            } catch (e) { /* storage unavailable */ }
 
         const openCtx = openCanvas.getContext('2d');
         const heroContent = document.querySelector('.hero-content');
