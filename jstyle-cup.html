@@ -257,6 +257,81 @@
             }
         }
 
+        /* 要項プレビュー */
+        .guidelines-preview {
+            margin-top: 80px;
+        }
+
+        .guidelines-preview-head {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-bottom: 24px;
+        }
+
+        .guidelines-preview-title {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--text-white);
+            letter-spacing: 1px;
+            padding-left: 14px;
+            border-left: 3px solid var(--accent-pink);
+        }
+
+        .guidelines-preview-note {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+        }
+
+        .guidelines-pages {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 700px) {
+            .guidelines-pages {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .guidelines-page {
+            display: block;
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: #fff;
+            transition: border-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .guidelines-page:hover,
+        .guidelines-page:focus-visible {
+            border-color: var(--accent-pink);
+            transform: translateY(-4px);
+        }
+
+        .guidelines-page img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .guidelines-page-num {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+            padding: 4px 12px;
+            border-radius: 50px;
+            background: rgba(5, 5, 16, 0.75);
+            color: #fff;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
         /* 種目・カテゴリ */
         .category-grid {
             display: grid;
@@ -949,6 +1024,34 @@
                                 </td>
                             </tr>
                         </table>
+                    </div>
+                </div>
+
+                <!-- 要項プレビュー -->
+                <div class="guidelines-preview reveal">
+                    <div class="guidelines-preview-head">
+                        <h3 class="guidelines-preview-title">大会要項</h3>
+                        <span class="guidelines-preview-note">画像をクリックするとPDFで開きます</span>
+                    </div>
+                    <div class="guidelines-pages">
+                        <a href="assets/jstyle-cup-2026-guidelines.pdf" class="guidelines-page" target="_blank"
+                            rel="noopener" aria-label="要項1ページ目をPDFで開く">
+                            <img src="assets/jstyle-cup-2026-guidelines-p1.png" width="1191" height="1684"
+                                loading="lazy"
+                                alt="第2回J.STYLE杯 要項1ページ目。主催、日時（令和8年12月26日・27日、7:30開場〜17:00試合終了予定）、会場、種目一覧と定員350人程度、試合方法、試合球、参加資格、表彰について記載。">
+                            <span class="guidelines-page-num">1 / 2</span>
+                        </a>
+                        <a href="assets/jstyle-cup-2026-guidelines.pdf" class="guidelines-page" target="_blank"
+                            rel="noopener" aria-label="要項2ページ目をPDFで開く">
+                            <img src="assets/jstyle-cup-2026-guidelines-p2.png" width="1191" height="1684"
+                                loading="lazy"
+                                alt="第2回J.STYLE杯 要項2ページ目。参加料1種目1000円と振込先、申し込み方法、問い合わせ先と締め切り（令和8年11月13日必着）、その他の注意事項について記載。">
+                            <span class="guidelines-page-num">2 / 2</span>
+                        </a>
+                    </div>
+                    <div style="text-align:center; margin-top:28px;">
+                        <a href="assets/jstyle-cup-2026-guidelines.pdf" class="btn btn-outline" target="_blank"
+                            rel="noopener">要項をダウンロード（PDF）</a>
                     </div>
                 </div>
             </div>
