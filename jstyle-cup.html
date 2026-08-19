@@ -4,12 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>J.STYLE杯 | 上越市の卓球大会</title>
-    <meta name="description" content="J.STYLEが主催する卓球大会「J.STYLE杯」。ジュニア選手の競技力向上と交流を目指す大会です。大会情報・結果はこちら。">
+    <title>第2回J.STYLE杯 | 上越市の卓球大会（2026年12月26日・27日）</title>
+    <meta name="description" content="第2回J.STYLE杯は2026年12月26日（土）・27日（日）、上越市総合体育館・身障者体育館で開催。小学1年生以下から高校・一般まで6区分。申込締切は11月13日（金）必着。要項はこちらからダウンロードできます。">
     <link rel="canonical" href="https://jstyle-tt.jp/jstyle-cup.html">
     <!-- OGP -->
-    <meta property="og:title" content="J.STYLE杯 | 上越市の卓球大会">
-    <meta property="og:description" content="J.STYLEが主催する卓球大会「J.STYLE杯」。ジュニア選手の競技力向上と交流を目指す大会。">
+    <meta property="og:title" content="第2回J.STYLE杯 | 2026年12月26日・27日 上越市総合体育館">
+    <meta property="og:description" content="J.STYLE主催の卓球大会。小学1年生以下から高校・一般まで6区分、定員350人程度。申込締切は2026年11月13日（金）必着。">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://jstyle-tt.jp/jstyle-cup.html">
     <meta property="og:image" content="https://jstyle-tt.jp/assets/hero.png">
@@ -17,8 +17,8 @@
     <meta property="og:site_name" content="J.STYLE | 上越市の卓球ジュニアチーム">
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="J.STYLE杯 | 上越市の卓球大会">
-    <meta name="twitter:description" content="J.STYLEが主催する卓球大会「J.STYLE杯」。ジュニア選手の競技力向上と交流を目指す大会。">
+    <meta name="twitter:title" content="第2回J.STYLE杯 | 2026年12月26日・27日 上越市総合体育館">
+    <meta name="twitter:description" content="J.STYLE主催の卓球大会。小学1年生以下から高校・一般まで6区分、定員350人程度。申込締切は2026年11月13日（金）必着。">
     <meta name="twitter:image" content="https://jstyle-tt.jp/assets/hero.png">
     <!-- JSON-LD -->
     <script type="application/ld+json">
@@ -26,10 +26,14 @@
       {
         "@context": "https://schema.org",
         "@type": "SportsEvent",
-        "name": "J.STYLE杯",
-        "description": "上越市の卓球ジュニア選手が一堂に集う卓球大会。J.STYLEが主催。",
+        "name": "第2回J.STYLE杯",
+        "description": "上越市の卓球ジュニア選手が一堂に集う卓球大会。J.STYLEが主催。小学1年生以下から高校・一般まで6区分。",
         "url": "https://jstyle-tt.jp/jstyle-cup.html",
         "sport": "卓球",
+        "startDate": "2026-12-26T08:00+09:00",
+        "endDate": "2026-12-27T17:00+09:00",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "organizer": {
           "@type": "SportsOrganization",
           "name": "J.STYLE",
@@ -37,7 +41,7 @@
         },
         "location": {
           "@type": "Place",
-          "name": "上越市総合体育館",
+          "name": "上越市総合体育館・身障者体育館",
           "address": {
             "@type": "PostalAddress",
             "postalCode": "943-0805",
@@ -466,6 +470,37 @@
             color: var(--text-gray);
         }
 
+        .result-block {
+            margin-bottom: 48px;
+        }
+
+        .result-block:last-child {
+            margin-bottom: 0;
+        }
+
+        .result-div-title {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--text-white);
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+            padding-left: 14px;
+            border-left: 3px solid var(--accent-pink);
+        }
+
+        .result-note {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+
+        @media (max-width: 600px) {
+            .result-div-title {
+                font-size: 0.95rem;
+            }
+        }
+
         .coming-soon-box {
             text-align: center;
             padding: 80px 40px;
@@ -526,6 +561,87 @@
             margin-top: 30px;
             font-size: 0.85rem;
             color: rgba(255, 255, 255, 0.3);
+        }
+
+        .entry-facts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 40px;
+            text-align: left;
+        }
+
+        .entry-fact {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 175, 204, 0.15);
+            border-radius: 12px;
+            padding: 16px 20px;
+        }
+
+        .entry-fact-label {
+            display: block;
+            font-size: 0.7rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: var(--accent-pink);
+            margin-bottom: 6px;
+        }
+
+        .entry-fact-value {
+            display: block;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-white);
+            word-break: break-all;
+        }
+
+        .entry-cautions {
+            max-width: 700px;
+            margin: 40px auto 0;
+            padding: 28px 32px;
+            background: rgba(28, 37, 65, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+        }
+
+        .entry-cautions h4 {
+            font-size: 0.8rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: var(--accent-pink);
+            margin-bottom: 16px;
+        }
+
+        .entry-cautions ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .entry-cautions li {
+            position: relative;
+            padding-left: 18px;
+            margin-bottom: 12px;
+            font-size: 0.88rem;
+            color: var(--text-gray);
+            line-height: 1.8;
+        }
+
+        .entry-cautions li:last-child {
+            margin-bottom: 0;
+        }
+
+        .entry-cautions li::before {
+            content: '・';
+            position: absolute;
+            left: 0;
+            color: var(--accent-pink);
+        }
+
+        @media (max-width: 600px) {
+            .entry-cautions {
+                padding: 24px 20px;
+            }
         }
 
         /* ページ内ナビ */
@@ -705,9 +821,13 @@
             <div class="cup-hero-badge">TOURNAMENT</div>
             <h1>J.STYLE杯</h1>
             <p>J.STYLEが主催する卓球大会。<br>ジュニア選手の競技力向上と、仲間との交流を大切にした大会です。</p>
+            <p style="margin-top:20px; font-weight:700; color:var(--text-white);">
+                第2回大会 参加チーム募集中<br>
+                <span style="font-size:0.9rem; font-weight:400; color:var(--text-gray);">申込締切 2026年11月13日（金）必着</span>
+            </p>
             <div class="cup-hero-actions">
                 <a href="#entry" class="btn btn-primary">エントリー情報</a>
-                <a href="#overview" class="btn btn-outline">大会概要を見る</a>
+                <a href="assets/jstyle-cup-2026-guidelines.pdf" class="btn btn-outline" target="_blank" rel="noopener">要項をダウンロード</a>
             </div>
 
             <div class="info-grid container">
@@ -716,21 +836,21 @@
                         <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
                     </span>
                     <h3>開催日</h3>
-                    <p>12月26日（Day 1）<br>12月27日（Day 2）</p>
+                    <p>2026年12月26日（土）Day 1<br>2026年12月27日（日）Day 2</p>
                 </div>
                 <div class="info-card reveal">
                     <span class="info-card-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
                     </span>
                     <h3>会場</h3>
-                    <p>上越市総合体育館<br>新潟県上越市木田1丁目17-33</p>
+                    <p>上越市総合体育館・身障者体育館<br>新潟県上越市木田1丁目17-33</p>
                 </div>
                 <div class="info-card reveal">
                     <span class="info-card-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="6"/><line x1="12.5" y1="12.5" x2="20" y2="20"/><circle cx="17.5" cy="17.5" r="2"/></svg>
                     </span>
                     <h3>対象</h3>
-                    <p>小学1年以下〜一般<br>①〜③（12/26）／④〜⑥（12/27）</p>
+                    <p>小学1年生以下〜高校・一般<br>全6区分／定員350人程度</p>
                 </div>
             </div>
         </section>
@@ -743,7 +863,7 @@
                     <div class="about-text">
                         <h2 class="reveal">競技を通じて、<br><span style="color: var(--accent-pink);">仲間と共に成長する。</span></h2>
                         <p class="reveal">
-                            J.STYLE杯は、J.STYLEが主催する卓球大会です。上越市を中心とした新潟県内のジュニア選手が一堂に集い、切磋琢磨できる場を提供します。
+                            J.STYLE杯は、J.STYLEが主催する卓球大会です。第1回は新潟県内をはじめ、富山・石川・長野・群馬・宮城・東京から選手が集まりました。地域を越えて切磋琢磨できる場を提供します。
                         </p>
                         <p class="reveal" style="margin-top: 16px;">
                             勝敗を超えた「競技の喜び」「フェアプレー精神」「仲間との絆」を大切にし、選手一人ひとりの成長を後押しします。
@@ -753,32 +873,78 @@
                         <table class="overview-table reveal">
                             <tr>
                                 <th>大会名</th>
-                                <td>J.STYLE杯</td>
+                                <td>第2回 J.STYLE杯</td>
                             </tr>
                             <tr>
                                 <th>主催</th>
                                 <td>J.STYLE（ジェイスタイル）</td>
                             </tr>
                             <tr>
-                                <th>会場</th>
-                                <td>上越市総合体育館<br>〒943-0805 新潟県上越市木田1丁目17-33</td>
-                            </tr>
-                            <tr>
-                                <th>対象</th>
+                                <th>日時</th>
                                 <td>
-                                    小学1年以下〜一般<br>
-                                    ①小学生混合1年以下の部 ②カブ ③カデット（12/26）<br>
-                                    ④バンビ ⑤ホープス ⑥一般（12/27）
+                                    2026年12月26日（土）・27日（日）<br>
+                                    <span style="font-size:0.9rem;">時程は<a href="#schedule" style="color:var(--accent-pink);">当日スケジュール</a>をご覧ください</span>
                                 </td>
                             </tr>
                             <tr>
-                                <th>参加費</th>
-                                <td>詳細は各大会のお知らせをご確認ください</td>
+                                <th>会場</th>
+                                <td>上越市総合体育館・身障者体育館<br>〒943-0805 新潟県上越市木田1丁目17-33</td>
+                            </tr>
+                            <tr>
+                                <th>種目</th>
+                                <td>
+                                    男女シングルス 全6区分（定員350人程度）<br>
+                                    <span style="font-size:0.9rem;">12/26 中学3年生以下／小学4年生以下／小学1年生以下</span><br>
+                                    <span style="font-size:0.9rem;">12/27 高校・一般／小学6年生以下／小学2年生以下</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>試合方法</th>
+                                <td>
+                                    個人戦　予選リーグ（5ゲーム）から決勝トーナメント（5ゲーム）<br>
+                                    および下位トーナメント（3ゲーム）<br>
+                                    <span style="font-size:0.9rem;">※参加人数により試合方法を変更する場合があります</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>試合球</th>
+                                <td>バタフライ スリースターボール R40+</td>
+                            </tr>
+                            <tr>
+                                <th>参加資格</th>
+                                <td>日本卓球協会に登録している方</td>
+                            </tr>
+                            <tr>
+                                <th>表彰</th>
+                                <td>
+                                    各部1位〜3位（ベスト4）まで、賞状と賞品を授与<br>
+                                    <span style="font-size:0.9rem;">※参加人数により変更あり</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>参加料</th>
+                                <td>
+                                    1種目 1,000円<br>
+                                    <span style="font-size:0.9rem;">申込時に指定口座へお振込みください（口座は要項に記載）。<br>
+                                    領収書は振込時の領収書に代えさせていただきます。<br>
+                                    棄権の場合も返金はいたしません。</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>申込方法</th>
+                                <td>
+                                    申込用紙に必要事項をご記入のうえ、J.STYLE事務局までメールでお送りください。<br>
+                                    <span style="font-size:0.9rem;">受信確認後、受付済メールを送信します。11月30日（月）までに受付済メールが届かない場合はお問い合わせください。</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>申込締切</th>
+                                <td>2026年11月13日（金）必着</td>
                             </tr>
                             <tr>
                                 <th>お問い合わせ</th>
                                 <td>
-                                    070-2837-6716<br>
+                                    J.STYLE事務局　宮本 爽志<br>
                                     j.style2024tt.team@gmail.com
                                 </td>
                             </tr>
@@ -818,18 +984,18 @@
                     <div class="category-grid">
                         <div class="category-card reveal">
                             <span class="age-range">①</span>
-                            <h4>小学生混合1年以下の部</h4>
-                            <p>シングルス</p>
+                            <h4>中学3年生以下の部</h4>
+                            <p>男子・女子シングルス</p>
                         </div>
                         <div class="category-card reveal">
                             <span class="age-range">②</span>
-                            <h4>男女カブの部</h4>
-                            <p>シングルス</p>
+                            <h4>小学4年生以下の部</h4>
+                            <p>男子・女子シングルス</p>
                         </div>
                         <div class="category-card reveal">
                             <span class="age-range">③</span>
-                            <h4>男女カデットの部</h4>
-                            <p>シングルス</p>
+                            <h4>小学1年生以下の部</h4>
+                            <p>男女混合シングルス（バンビ台）</p>
                         </div>
                     </div>
                 </div>
@@ -843,20 +1009,29 @@
                     <div class="category-grid">
                         <div class="category-card reveal">
                             <span class="age-range">④</span>
-                            <h4>男女バンビの部</h4>
+                            <h4>高校・一般の部</h4>
                             <p>シングルス</p>
                         </div>
                         <div class="category-card reveal">
                             <span class="age-range">⑤</span>
-                            <h4>男女ホープスの部</h4>
-                            <p>シングルス</p>
+                            <h4>小学6年生以下の部</h4>
+                            <p>男子・女子シングルス</p>
                         </div>
                         <div class="category-card reveal">
                             <span class="age-range">⑥</span>
-                            <h4>男女一般の部</h4>
-                            <p>シングルス</p>
+                            <h4>小学2年生以下の部</h4>
+                            <p>男女混合シングルス</p>
                         </div>
                     </div>
+                </div>
+
+                <!-- 種目に関する注記 -->
+                <div class="reveal" style="margin-top:48px; padding:24px 28px; background:var(--card-bg); border:1px solid var(--border-subtle); border-radius:16px; backdrop-filter:blur(10px);">
+                    <p style="font-size:0.9rem; color:var(--text-gray); line-height:1.9; margin:0;">
+                        ※ 小学1年生以下の部のみ、予選リーグおよび決勝トーナメントはバンビ台を使用します。下位トーナメントは普通台で行います。<br>
+                        ※ 年齢が上のカテゴリーへの参加は可能です。ただし、参加種目は1日1種目のみとします。<br>
+                        ※ 定員は350人程度です。超えた場合は申込期日前でも締め切ります。
+                    </p>
                 </div>
             </div>
         </section>
@@ -889,7 +1064,47 @@
                         .flow-bar { flex-direction:column; align-items:flex-start; }
                         .flow-arrow { transform:rotate(90deg); }
                     }
+
+                    .timetable { background:var(--card-bg); border:1px solid var(--border-subtle); border-radius:16px; padding:8px 28px; backdrop-filter:blur(12px); margin-bottom:56px; }
+                    .timetable-row { display:flex; align-items:baseline; gap:24px; padding:14px 0; border-bottom:1px solid rgba(255,255,255,0.05); }
+                    .timetable-row:last-child { border-bottom:none; }
+                    .timetable-row .time { font-family:var(--font-display); font-size:1.5rem; color:var(--accent-pink); letter-spacing:1px; line-height:1; min-width:82px; flex-shrink:0; }
+                    .timetable-row .label { font-size:0.95rem; color:var(--text-white); font-weight:700; }
+                    .timetable-caption { font-size:0.85rem; color:var(--text-dim); margin-bottom:16px; }
+                    @media (max-width:600px) {
+                        .timetable { padding:8px 20px; }
+                        .timetable-row { gap:16px; }
+                        .timetable-row .time { font-size:1.25rem; min-width:68px; }
+                        .timetable-row .label { font-size:0.9rem; }
+                    }
                 </style>
+
+                <!-- 当日の時程（両日共通） -->
+                <div class="reveal">
+                    <p class="timetable-caption">両日とも同じ時程で進行します。</p>
+                    <div class="timetable">
+                        <div class="timetable-row">
+                            <span class="time">7:30</span>
+                            <span class="label">開場</span>
+                        </div>
+                        <div class="timetable-row">
+                            <span class="time">8:00</span>
+                            <span class="label">受付・公式練習</span>
+                        </div>
+                        <div class="timetable-row">
+                            <span class="time">8:45</span>
+                            <span class="label">開会式</span>
+                        </div>
+                        <div class="timetable-row">
+                            <span class="time">9:00</span>
+                            <span class="label">試合開始</span>
+                        </div>
+                        <div class="timetable-row">
+                            <span class="time">17:00</span>
+                            <span class="label">試合終了（予定）</span>
+                        </div>
+                    </div>
+                </div>
 
                 <!-- Day 1 -->
                 <div class="day-block reveal">
@@ -898,9 +1113,9 @@
                         <span class="sub">Day 1 &mdash; 全3種目 同時進行</span>
                     </div>
                     <div class="events-row">
-                        <span class="event-badge">① 小学生混合1年以下の部</span>
-                        <span class="event-badge">② 男女カブの部</span>
-                        <span class="event-badge">③ 男女カデットの部</span>
+                        <span class="event-badge">① 中学3年生以下の部</span>
+                        <span class="event-badge">② 小学4年生以下の部</span>
+                        <span class="event-badge">③ 小学1年生以下の部</span>
                     </div>
                     <div class="flow-bar">
                         <div class="flow-step">
@@ -927,9 +1142,9 @@
                         <span class="sub">Day 2 &mdash; 全3種目 同時進行</span>
                     </div>
                     <div class="events-row">
-                        <span class="event-badge">④ 男女バンビの部</span>
-                        <span class="event-badge">⑤ 男女ホープスの部</span>
-                        <span class="event-badge">⑥ 男女一般の部</span>
+                        <span class="event-badge">④ 高校・一般の部</span>
+                        <span class="event-badge">⑤ 小学6年生以下の部</span>
+                        <span class="event-badge">⑥ 小学2年生以下の部</span>
                     </div>
                     <div class="flow-bar">
                         <div class="flow-step">
@@ -957,14 +1172,129 @@
                 <h2 class="section-title reveal">大会結果</h2>
                 <div class="reveal">
                     <div class="results-tabs">
-                        <button class="tab-btn active" onclick="switchTab(event, 'tab-latest')">第1回 (準備中)</button>
+                        <button class="tab-btn active" onclick="switchTab(event, 'tab-latest')">第1回（2025.12.27）</button>
                     </div>
                     <div id="tab-latest" class="tab-content active">
-                        <div class="coming-soon-box">
-                            <span class="icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2z"/></svg>
-                            </span>
-                            <p>第1回 J.STYLE杯の大会結果は、<br>大会終了後にこちらで発表します。<br>開催情報はNEWSをお待ちください。</p>
+                        <p class="result-note">第1回J.STYLE杯（2025年12月27日／上越市総合体育館・身障者体育館）の入賞者です。各部1位〜3位（ベスト4）を掲載しています。</p>
+<div class="result-block">
+                            <h3 class="result-div-title">小学1年生以下の部　男女混合シングルス</h3>
+                            <table class="result-table">
+                                <thead><tr><th>順位</th><th>氏名</th><th>所属</th></tr></thead>
+                                <tbody>
+                                    <tr><td><span class="rank-badge rank-1">1</span></td><td>羽鳥　匡晃</td><td>Quest新潟クラブ（新潟）</td></tr>
+                                    <tr><td><span class="rank-badge rank-2">2</span></td><td>武田　壮真</td><td>かほくジュニア（石川）</td></tr>
+                                    <tr><td><span class="rank-badge rank-3">3</span></td><td>須田　煌也</td><td>J.STYLE（新潟）</td></tr>
+                                    <tr><td><span class="rank-badge rank-3">3</span></td><td>奥　大真</td><td>能美ジュニア（石川）</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="result-block">
+                            <h3 class="result-div-title">小学2年生以下の部　男女混合シングルス</h3>
+                            <table class="result-table">
+                                <thead><tr><th>順位</th><th>氏名</th><th>所属</th></tr></thead>
+                                <tbody>
+                                    <tr><td><span class="rank-badge rank-1">1</span></td><td>川島　絆瑞</td><td>松平スポーツ（石川）</td></tr>
+                                    <tr><td><span class="rank-badge rank-2">2</span></td><td>奥　ひなた</td><td>能美ジュニア（石川）</td></tr>
+                                    <tr><td><span class="rank-badge rank-3">3</span></td><td>小島　淳司</td><td>新発田ジュニア（新潟）</td></tr>
+                                    <tr><td><span class="rank-badge rank-3">3</span></td><td>浅野菜々子</td><td>STライトニング（富山）</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="result-block">
+                            <h3 class="result-div-title">小学4年生以下の部　男子シングルス</h3>
+                            <table class="result-table">
+                                <thead><tr><th>順位</th><th>氏名</th><th>所属</th></tr></thead>
+                                <tbody>
+                                    <tr><td><span class="rank-badge rank-1">1</span></td><td>山岸　龍馬</td><td>J.STYLE（新潟）</td></tr>
+                                    <tr><td><span class="rank-badge rank-2">2</span></td><td>萬田　晴也</td><td>STライトニング（富山）</td></tr>
+                                    <tr><td><span class="rank-badge rank-3">3</span></td><td>須田　健心</td><td>J.STYLE（新潟）</td></tr>
+                                    <tr><td><span class="rank-badge rank-3">3</span></td><td>古山　陽登</td><td>須坂卓翔会（長野）</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="result-block">
+                            <h3 class="result-div-title">小学4年生以下の部　女子シングルス</h3>
+                            <table class="result-table">
+                                <thead><tr><th>順位</th><th>氏名</th><th>所属</th></tr></thead>
+                                <tbody>
+                                    <tr><td><span class="rank-badge rank-1">1</span></td><td>杉本侑俐奈</td><td>松平スポーツ（石川）</td></tr>
+                                    <tr><td><span class="rank-badge rank-2">2</span></td><td>岩澤　彩純</td><td>上越ジュニア（新潟）</td></tr>
+                                    <tr><td><span class="rank-badge rank-3">3</span></td><td>橋本　成海</td><td>PEACE（石川）</td></tr>
+                                    <tr><td><span class="rank-badge rank-3">3</span></td><td>田中　彩良</td><td>J.STYLE（新潟）</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="result-block">
+                            <h3 class="result-div-title">小学6年生以下の部　男子シングルス</h3>
+                            <table class="result-table">
+                                <thead><tr><th>順位</th><th>氏名</th><th>所属</th></tr></thead>
+                                <tbody>
+                                    <tr><td><span class="rank-badge rank-1">1</span></td><td>荒井　奏人</td><td>STライトニング（富山）</td></tr>
+                                    <tr><td><span class="rank-badge rank-2">2</span></td><td>長谷川　丈</td><td>加茂卓球クラブ（新潟）</td></tr>
+                                    <tr><td><span class="rank-badge rank-3">3</span></td><td>本合　結羽</td><td>長岡Dreamジュニア（新潟）</td></tr>
+                                    <tr><td><span class="rank-badge rank-3">3</span></td><td>沢井　湊</td><td>STライトニング（富山）</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="result-block">
+                            <h3 class="result-div-title">小学6年生以下の部　女子シングルス</h3>
+                            <table class="result-table">
+                                <thead><tr><th>順位</th><th>氏名</th><th>所属</th></tr></thead>
+                                <tbody>
+                                    <tr><td><span class="rank-badge rank-1">1</span></td><td>川島　絆愛</td><td>松平スポーツ（石川）</td></tr>
+                                    <tr><td><span class="rank-badge rank-2">2</span></td><td>草薙　咲綾</td><td>須坂卓翔会（長野）</td></tr>
+                                    <tr><td><span class="rank-badge rank-3">3</span></td><td>井塚　実莉</td><td>つばめジュニア（新潟）</td></tr>
+                                    <tr><td><span class="rank-badge rank-3">3</span></td><td>岩澤　美咲</td><td>上越ジュニア（新潟）</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="result-block">
+                            <h3 class="result-div-title">中学2年生以下の部　男子シングルス</h3>
+                            <table class="result-table">
+                                <thead><tr><th>順位</th><th>氏名</th><th>所属</th></tr></thead>
+                                <tbody>
+                                    <tr><td><span class="rank-badge rank-1">1</span></td><td>有元　一期</td><td>STライトニング（富山）</td></tr>
+                                    <tr><td><span class="rank-badge rank-2">2</span></td><td>阿部　粋和</td><td>新大クラブ（新潟）</td></tr>
+                                    <tr><td><span class="rank-badge rank-3">3</span></td><td>丸山　俐久</td><td>NexuS.F（新潟）</td></tr>
+                                    <tr><td><span class="rank-badge rank-3">3</span></td><td>井村　謙太</td><td>仙台ジュニアクラブ（宮城）</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="result-block">
+                            <h3 class="result-div-title">中学2年生以下の部　女子シングルス</h3>
+                            <table class="result-table">
+                                <thead><tr><th>順位</th><th>氏名</th><th>所属</th></tr></thead>
+                                <tbody>
+                                    <tr><td><span class="rank-badge rank-1">1</span></td><td>青山　依央</td><td>妙高新井JTC（新潟）</td></tr>
+                                    <tr><td><span class="rank-badge rank-2">2</span></td><td>池内　杏衣</td><td>高見塾（富山）</td></tr>
+                                    <tr><td><span class="rank-badge rank-3">3</span></td><td>佐藤　優妃</td><td>白根アトム（新潟）</td></tr>
+                                    <tr><td><span class="rank-badge rank-3">3</span></td><td>川上　綾音</td><td>J.STYLE（新潟）</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="result-block">
+                            <h3 class="result-div-title">高校・一般の部　男子シングルス</h3>
+                            <table class="result-table">
+                                <thead><tr><th>順位</th><th>氏名</th><th>所属</th></tr></thead>
+                                <tbody>
+                                    <tr><td><span class="rank-badge rank-1">1</span></td><td>石山　慎</td><td>ケアリッツ・アンド・パートナーズ（東京）</td></tr>
+                                    <tr><td><span class="rank-badge rank-2">2</span></td><td>山岸　駿</td><td>新潟産業大学附属高等学校（新潟）</td></tr>
+                                    <tr><td><span class="rank-badge rank-3">3</span></td><td>髙橋凌太郎</td><td>新潟産業大学附属高等学校（新潟）</td></tr>
+                                    <tr><td><span class="rank-badge rank-3">3</span></td><td>小林　侑立</td><td>新潟産業大学附属高等学校（新潟）</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="result-block">
+                            <h3 class="result-div-title">高校・一般の部　女子シングルス</h3>
+                            <table class="result-table">
+                                <thead><tr><th>順位</th><th>氏名</th><th>所属</th></tr></thead>
+                                <tbody>
+                                    <tr><td><span class="rank-badge rank-1">1</span></td><td>山岸　愛菜</td><td>金城大学（石川）</td></tr>
+                                    <tr><td><span class="rank-badge rank-2">2</span></td><td>石月さくら</td><td>須坂卓翔会（長野）</td></tr>
+                                    <tr><td><span class="rank-badge rank-3">3</span></td><td>田巻　美帆</td><td>エールズつばめ（新潟）</td></tr>
+                                    <tr><td><span class="rank-badge rank-3">3</span></td><td>松下　和千</td><td>群馬県立吾妻中央高校（群馬）</td></tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -976,20 +1306,54 @@
             <div class="container">
                 <h2 class="section-title text-center reveal">エントリー</h2>
                 <div class="entry-card reveal">
-                    <h3>エントリーについて</h3>
+                    <h3>第2回大会 参加チーム募集中</h3>
                     <p>
-                        エントリーの受付は、各大会の告知時に開始します。<br>
-                        詳細はNEWSまたは直接お問い合わせください。<br>
+                        申込用紙に必要事項をご記入のうえ、J.STYLE事務局までメールでお送りください。<br>
                         J.STYLE会員以外の方もご参加いただけます。
                     </p>
-                    <div class="entry-actions">
-                        <a href="mailto:j.style2024tt.team@gmail.com" class="btn btn-primary">メールで問い合わせる</a>
-                        <a href="tel:070-2837-6716" class="btn btn-outline">電話で問い合わせる</a>
+
+                    <div class="entry-facts">
+                        <div class="entry-fact">
+                            <span class="entry-fact-label">申込締切</span>
+                            <span class="entry-fact-value">2026年11月13日（金）必着</span>
+                        </div>
+                        <div class="entry-fact">
+                            <span class="entry-fact-label">参加料</span>
+                            <span class="entry-fact-value">1種目 1,000円</span>
+                        </div>
+                        <div class="entry-fact">
+                            <span class="entry-fact-label">申込先</span>
+                            <span class="entry-fact-value">j.style2024tt.team@gmail.com</span>
+                        </div>
                     </div>
+
+                    <div class="entry-actions">
+                        <a href="assets/jstyle-cup-2026-guidelines.pdf" class="btn btn-primary" target="_blank" rel="noopener">要項をダウンロード（PDF）</a>
+                        <!-- 申込用紙を受領したら、下のコメントを外してリンクを有効にする
+                        <a href="assets/jstyle-cup-2026-entry.xlsx" class="btn btn-primary" download>申込用紙をダウンロード（Excel）</a>
+                        -->
+                        <a href="mailto:j.style2024tt.team@gmail.com?subject=%E7%AC%AC2%E5%9B%9EJ.STYLE%E6%9D%AF%20%E7%94%B3%E8%BE%BC%E3%81%BF" class="btn btn-outline">メールで申し込む</a>
+                    </div>
+
                     <p class="entry-note">
-                        070-2837-6716 ／ j.style2024tt.team@gmail.com<br>
-                        お問い合わせはお気軽にどうぞ
+                        申込用紙が必要な場合は、上記メールアドレスまでお問い合わせください。<br>
+                        お電話でのお問い合わせ： <a href="tel:070-2837-6716" style="color:inherit;">070-2837-6716</a>（J.STYLE事務局　宮本 爽志）
                     </p>
+                </div>
+
+                <!-- 参加にあたっての注意事項 -->
+                <div class="entry-cautions reveal">
+                    <h4>参加にあたって</h4>
+                    <ul>
+                        <li>定員は350人程度です。超えた場合は申込期日前でも締め切ります。</li>
+                        <li>受信確認後、受付済メールを送信します。11月30日（月）までに受付済メールが届かない場合はお問い合わせください。</li>
+                        <li>参加料は申込時に指定口座へお振込みください（口座は要項に記載）。領収書は振込時の領収書に代えさせていただきます。棄権の場合も返金はいたしません。</li>
+                        <li>ルールは現行の日本卓球ルールおよび本大会規定によります。</li>
+                        <li>選手は日本卓球協会の令和8年度ゼッケンを着用してください。</li>
+                        <li>本大会は降雪状況などにより、急遽中止することがあります。その際は前日の17時までにご連絡いたします。</li>
+                        <li>大会期日の1〜2週間前に、組み合わせと諸連絡をメールで送信します。</li>
+                        <li>大会の様子は、SNSや報道機関に写真や動画等が掲載される場合があります。</li>
+                    </ul>
                 </div>
             </div>
         </section>
