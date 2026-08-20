@@ -257,9 +257,41 @@
             }
         }
 
+        /* 大会概要のリード文 */
+        .overview-lead {
+            max-width: 760px;
+            margin-top: 40px;
+        }
+
         /* 要項プレビュー */
         .guidelines-preview {
+            margin-top: 72px;
+        }
+
+        .guidelines-actions {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 32px;
+        }
+
+        /* 大会情報（要項の内容） */
+        .overview-details {
             margin-top: 80px;
+        }
+
+        .overview-subtitle {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--text-white);
+            letter-spacing: 1px;
+            padding-left: 14px;
+            border-left: 3px solid var(--accent-pink);
+        }
+
+        .overview-details .overview-table {
+            margin-top: 24px;
         }
 
         .guidelines-preview-head {
@@ -934,8 +966,7 @@
         <section id="overview" class="overview-section">
             <div class="container">
                 <h2 class="section-title reveal">大会概要</h2>
-                <div class="grid-2">
-                    <div class="about-text">
+                <div class="about-text overview-lead">
                         <h2 class="reveal">競技を通じて、<br><span style="color: var(--accent-pink);">仲間と共に成長する。</span></h2>
                         <p class="reveal">
                             J.STYLE杯は、J.STYLEが主催する卓球大会です。第1回は新潟県内をはじめ、富山・石川・長野・群馬・宮城・東京から選手が集まりました。地域を越えて切磋琢磨できる場を提供します。
@@ -943,9 +974,41 @@
                         <p class="reveal" style="margin-top: 16px;">
                             勝敗を超えた「競技の喜び」「フェアプレー精神」「仲間との絆」を大切にし、選手一人ひとりの成長を後押しします。
                         </p>
+                </div>
+
+                <!-- 要項プレビュー -->
+                <div class="guidelines-preview reveal">
+                    <div class="guidelines-preview-head">
+                        <h3 class="guidelines-preview-title">大会要項</h3>
+                        <span class="guidelines-preview-note">画像をクリックするとPDFで開きます</span>
                     </div>
-                    <div>
-                        <table class="overview-table reveal">
+                    <div class="guidelines-pages">
+                        <a href="assets/jstyle-cup-2026-guidelines.pdf" class="guidelines-page" target="_blank"
+                            rel="noopener" aria-label="要項1ページ目をPDFで開く">
+                            <img src="assets/jstyle-cup-2026-guidelines-p1.png" width="1191" height="1684"
+                                loading="lazy"
+                                alt="第2回J.STYLE杯 要項1ページ目。主催、日時（令和8年12月26日・27日、7:30開場〜17:00試合終了予定）、会場、種目一覧と定員350人程度、試合方法、試合球、参加資格、表彰について記載。">
+                            <span class="guidelines-page-num">1 / 2</span>
+                        </a>
+                        <a href="assets/jstyle-cup-2026-guidelines.pdf" class="guidelines-page" target="_blank"
+                            rel="noopener" aria-label="要項2ページ目をPDFで開く">
+                            <img src="assets/jstyle-cup-2026-guidelines-p2.png" width="1191" height="1684"
+                                loading="lazy"
+                                alt="第2回J.STYLE杯 要項2ページ目。参加料1種目1000円と振込先、申し込み方法、問い合わせ先と締め切り（令和8年11月13日必着）、その他の注意事項について記載。">
+                            <span class="guidelines-page-num">2 / 2</span>
+                        </a>
+                    </div>
+                    <div class="guidelines-actions">
+                        <a href="assets/jstyle-cup-2026-guidelines.pdf" class="btn btn-outline" target="_blank"
+                            rel="noopener">要項をダウンロード（PDF）</a>
+                        <a href="assets/jstyle-cup-2026-entry.xlsx" class="btn btn-primary" download>申込用紙をダウンロード（Excel）</a>
+                    </div>
+                </div>
+
+                <!-- 大会情報（要項の内容） -->
+                <div class="overview-details reveal">
+                    <h3 class="overview-subtitle">大会情報</h3>
+                    <table class="overview-table reveal">
                             <tr>
                                 <th>大会名</th>
                                 <td>第2回 J.STYLE杯</td>
@@ -1024,35 +1087,6 @@
                                 </td>
                             </tr>
                         </table>
-                    </div>
-                </div>
-
-                <!-- 要項プレビュー -->
-                <div class="guidelines-preview reveal">
-                    <div class="guidelines-preview-head">
-                        <h3 class="guidelines-preview-title">大会要項</h3>
-                        <span class="guidelines-preview-note">画像をクリックするとPDFで開きます</span>
-                    </div>
-                    <div class="guidelines-pages">
-                        <a href="assets/jstyle-cup-2026-guidelines.pdf" class="guidelines-page" target="_blank"
-                            rel="noopener" aria-label="要項1ページ目をPDFで開く">
-                            <img src="assets/jstyle-cup-2026-guidelines-p1.png" width="1191" height="1684"
-                                loading="lazy"
-                                alt="第2回J.STYLE杯 要項1ページ目。主催、日時（令和8年12月26日・27日、7:30開場〜17:00試合終了予定）、会場、種目一覧と定員350人程度、試合方法、試合球、参加資格、表彰について記載。">
-                            <span class="guidelines-page-num">1 / 2</span>
-                        </a>
-                        <a href="assets/jstyle-cup-2026-guidelines.pdf" class="guidelines-page" target="_blank"
-                            rel="noopener" aria-label="要項2ページ目をPDFで開く">
-                            <img src="assets/jstyle-cup-2026-guidelines-p2.png" width="1191" height="1684"
-                                loading="lazy"
-                                alt="第2回J.STYLE杯 要項2ページ目。参加料1種目1000円と振込先、申し込み方法、問い合わせ先と締め切り（令和8年11月13日必着）、その他の注意事項について記載。">
-                            <span class="guidelines-page-num">2 / 2</span>
-                        </a>
-                    </div>
-                    <div style="text-align:center; margin-top:28px;">
-                        <a href="assets/jstyle-cup-2026-guidelines.pdf" class="btn btn-outline" target="_blank"
-                            rel="noopener">要項をダウンロード（PDF）</a>
-                    </div>
                 </div>
             </div>
         </section>
