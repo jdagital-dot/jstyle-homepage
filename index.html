@@ -137,12 +137,27 @@
     <!-- Opening Animation Overlay -->
     <div id="opening-overlay">
         <canvas id="opening-canvas"></canvas>
-        <div class="branding-overlay-content">
+        <div class="branding-overlay-content" id="opening-default">
             <p class="opening-logo">J.STYLE<span class="underline"></span></p>
             <p class="opening-subtitle">Future of Table Tennis</p>
         </div>
+        <!-- 大会期間中だけ表示するオープニング（config.js の cupPromo で制御） -->
+        <div class="branding-overlay-content cup-opening" id="opening-cup" hidden>
+            <p class="cup-opening-label"></p>
+            <p class="cup-opening-name"><span class="cup-opening-name-main"></span><span class="cup-opening-name-accent"></span></p>
+            <span class="cup-opening-rule" aria-hidden="true"></span>
+            <p class="cup-opening-date"></p>
+            <p class="cup-opening-venue"></p>
+        </div>
         <p class="opening-skip">Tap to skip</p>
     </div>
+
+    <!-- 大会の期間限定告知バー（config.js の cupPromo で日付制御。期間外は表示されません） -->
+    <a class="cup-bar" id="cup-bar" href="jstyle-cup.html" hidden>
+        <span class="cup-bar-text" id="cup-bar-text"></span>
+        <span class="cup-bar-arrow" aria-hidden="true">&rsaquo;</span>
+        <button class="cup-bar-close" id="cup-bar-close" type="button" aria-label="この告知を閉じる">&times;</button>
+    </a>
 
     <header class="main-header">
         <div class="header-inner">

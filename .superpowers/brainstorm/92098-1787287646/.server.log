@@ -1,7 +1,0 @@
-{"type":"server-started","port":51929,"host":"127.0.0.1","url_host":"localhost","url":"http://localhost:51929","screen_dir":"/Users/miyamotosoushi/Desktop/Antigravity_Company/Media/jstyle-homepage/.superpowers/brainstorm/92098-1787287646"}
-{"type":"screen-added","file":"/Users/miyamotosoushi/Desktop/Antigravity_Company/Media/jstyle-homepage/.superpowers/brainstorm/92098-1787287646/firstview.html"}
-{"type":"screen-added","file":"/Users/miyamotosoushi/Desktop/Antigravity_Company/Media/jstyle-homepage/.superpowers/brainstorm/92098-1787287646/popup.html"}
-{"source":"user-event","type":"click","text":"TOURNAMENT\n          第2回J.STYLE杯\n          2026.12.26 SAT - 12.27 SUN\n          Tap to skip\n        \n      \n    \n    \n      D3. オープニング自体を大会仕様に\n      今あるオープニングアニメを期間中だけ大会バージョンに差し替える。待ち時間が増えないのが利点。閉じる操作も不要で、そのままトップへ流れる。","choice":"d3","id":null,"timestamp":1787289491144}
-{"type":"screen-added","file":"/Users/miyamotosoushi/Desktop/Antigravity_Company/Media/jstyle-homepage/.superpowers/brainstorm/92098-1787287646/waiting.html"}
-{"type":"screen-added","file":"/Users/miyamotosoushi/Desktop/Antigravity_Company/Media/jstyle-homepage/.superpowers/brainstorm/92098-1787287646/final-design.html"}
-{"type":"server-stopped","reason":"idle timeout"}
