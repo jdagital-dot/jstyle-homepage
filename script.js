@@ -219,7 +219,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     const brandOverlay = document.querySelector('.branding-overlay-content:not([hidden])');
                     if (brandOverlay) brandOverlay.classList.add('visible');
 
-                    setTimeout(finishOpening, 1800);
+                    // 文字を読む時間。大会仕様は4行あるため長めに取っている
+                    setTimeout(finishOpening, 3400);
                 }
             } else if (animationPhase === 'blast') {
                 for (let i = sakuraParticles.length - 1; i >= 0; i--) {
