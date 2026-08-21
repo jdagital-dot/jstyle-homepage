@@ -1,0 +1,106 @@
+<h2>設計案：告知バー ＋ 大会仕様オープニング</h2>
+<p class="subtitle">実際の配色・文言で作っています。2段階の自動切替も下に並べました。</p>
+
+<style>
+  .fr { background:#050510; border-radius:10px; overflow:hidden; font-family:'Hiragino Sans',sans-serif; color:#fff; }
+  .bar { background:linear-gradient(90deg,#ff6b9d 0%,#ffafcc 100%); color:#14142a; font-size:11px; font-weight:800; padding:9px 12px; text-align:center; letter-spacing:.3px; position:relative; }
+  .bar .x { position:absolute; right:10px; top:50%; transform:translateY(-50%); opacity:.55; font-size:12px; }
+  .bar .arw { font-weight:900; }
+  .hdr { display:flex; align-items:center; justify-content:space-between; padding:11px 14px; background:rgba(255,255,255,.04); }
+  .hdr .lg { font-weight:900; font-size:13px; letter-spacing:1px; }
+  .hdr .nv { color:#8a8a9a; font-size:9px; letter-spacing:.5px; }
+  .hdr .cta { background:#ffafcc; color:#111; font-size:9px; font-weight:800; padding:5px 12px; border-radius:50px; }
+  .bd { padding:30px 18px 34px; text-align:center; background:radial-gradient(circle at 30% 40%, rgba(255,175,204,.13) 0%, transparent 62%), linear-gradient(135deg,#050510 0%,#0a1128 100%); }
+  .bd .sb { font-size:8px; letter-spacing:3px; color:#ffafcc; margin-bottom:11px; }
+  .bd .ld { font-size:23px; font-weight:900; line-height:1.28; margin-bottom:11px; }
+  .bd .ld .pk { color:#ffafcc; }
+  .bd .ds { font-size:9.5px; color:#9a9aaa; line-height:1.7; margin-bottom:16px; }
+  .bd .bt { display:flex; gap:8px; justify-content:center; }
+  .bd .b1 { background:#ffafcc; color:#111; font-weight:800; }
+  .bd .b2 { border:1px solid rgba(255,255,255,.35); }
+  .bd .b1,.bd .b2 { font-size:9.5px; padding:7px 15px; border-radius:50px; }
+  /* オープニング */
+  .op { height:250px; background:linear-gradient(155deg,#08081a 0%,#1a0a22 55%,#0a0a1c 100%); display:flex; flex-direction:column; align-items:center; justify-content:center; position:relative; }
+  .op .bg { position:absolute; inset:0; background:radial-gradient(circle at 50% 45%, rgba(255,107,157,.16) 0%, transparent 58%); }
+  .op .in { position:relative; text-align:center; }
+  .op .bdg { display:inline-block; font-size:8px; letter-spacing:4px; color:#ffafcc; border:1px solid rgba(255,175,204,.5); padding:4px 13px; border-radius:50px; margin-bottom:14px; }
+  .op .n2 { font-size:11px; letter-spacing:5px; color:#c9c9d6; margin-bottom:5px; }
+  .op .big { font-size:34px; font-weight:900; letter-spacing:1px; line-height:1.1; background:linear-gradient(to right,#fff,#ffafcc); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+  .op .dt { font-size:11px; color:#dcdce6; margin-top:13px; letter-spacing:2px; font-weight:700; }
+  .op .ve { font-size:8.5px; color:#8a8a9a; margin-top:6px; }
+  .op .sk { position:absolute; bottom:13px; left:50%; transform:translateX(-50%); font-size:8px; color:#6a6a7a; letter-spacing:1px; }
+  .cap { font-size:11px; color:#8a8a9a; margin:7px 0 0; text-align:center; }
+  .stage { border:1px solid rgba(255,255,255,.1); border-radius:8px; padding:10px; margin-bottom:12px; }
+  .stage .lb { font-size:10px; color:#ffafcc; font-weight:700; margin-bottom:7px; letter-spacing:.5px; }
+</style>
+
+<div class="section">
+  <h3>① 大会仕様のオープニング（サイトを開いた瞬間・約2秒）</h3>
+  <div class="mockup">
+    <div class="mockup-body" style="padding:12px; background:#111;">
+      <div class="fr">
+        <div class="op">
+          <div class="bg"></div>
+          <div class="in">
+            <div class="bdg">TOURNAMENT</div>
+            <div class="n2">第 2 回</div>
+            <div class="big">J.STYLE杯</div>
+            <div class="dt">2026.12.26 SAT — 12.27 SUN</div>
+            <div class="ve">上越市総合体育館・身障者体育館</div>
+          </div>
+          <div class="sk">Tap to skip</div>
+        </div>
+      </div>
+      <p class="cap">今のロゴアニメと同じ枠組み（1セッション1回・タップでスキップ・動きを減らす設定なら省略）。終わるとそのままトップへ流れます。</p>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>② トップ最上部の告知バー（常に表示）</h3>
+  <div class="mockup">
+    <div class="mockup-body" style="padding:12px; background:#111;">
+      <div class="fr">
+        <div class="bar">第2回 J.STYLE杯 参加チーム募集中｜12/26・27 開催／申込締切 11/13（金）必着 <span class="arw">›</span><span class="x">×</span></div>
+        <div class="hdr"><span class="lg">J.STYLE</span><span class="nv">NEWS ABOUT COURSES STAFF ACCESS</span><span class="cta">体験申込</span></div>
+        <div class="bd">
+          <div class="sb">FUTURE OF TABLE TENNIS</div>
+          <div class="ld">未来のアスリートを<br><span class="pk">ここ上越から。</span></div>
+          <div class="ds">J.STYLEは、全国大会などで活躍できる選手の育成と、<br>卓球を通じた人間形成を目指すジュニアチームです。</div>
+          <div class="bt"><span class="b1">コース紹介を見る</span><span class="b2">お問い合わせ</span></div>
+        </div>
+      </div>
+      <p class="cap">バーをクリックすると大会ページへ。今のトップの内容は一切変えていません。</p>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>③ 日付による自動切替（2段階）</h3>
+  <div class="stage">
+    <div class="lb">いま 〜 11/13（申込受付中）</div>
+    <div class="fr"><div class="bar">第2回 J.STYLE杯 参加チーム募集中｜12/26・27 開催／申込締切 11/13（金）必着 <span class="arw">›</span><span class="x">×</span></div></div>
+  </div>
+  <div class="stage">
+    <div class="lb">11/14 〜 12/27（受付終了・開催間近）</div>
+    <div class="fr"><div class="bar" style="background:linear-gradient(90deg,#6b7bff 0%,#a9b4ff 100%);">第2回 J.STYLE杯 まもなく開催｜2026年12月26日（土）・27日（日） 上越市総合体育館 <span class="arw">›</span><span class="x">×</span></div></div>
+  </div>
+  <div class="stage">
+    <div class="lb">12/28 〜（自動で消える）</div>
+    <div class="fr"><div class="hdr"><span class="lg">J.STYLE</span><span class="nv">NEWS ABOUT COURSES STAFF ACCESS</span><span class="cta">体験申込</span></div></div>
+    <p class="cap" style="text-align:left;margin-top:8px;">バーもオープニングも自動で元に戻ります。こちらで何か操作する必要はありません。</p>
+  </div>
+</div>
+
+<div class="section">
+  <h3>仕様のポイント</h3>
+  <ul style="font-size:13px;line-height:2;">
+    <li><strong>日付は config.js で一元管理</strong> — 締切・開催日・終了日を書いておくだけ。文言もそこで変えられます</li>
+    <li><strong>×で閉じられる</strong> — 閉じたらそのセッション中は出ません（しつこくしない）</li>
+    <li><strong>カウントダウンは入れません</strong> — 締切まで84日ある今「あと84日」では響かないため、日付を明記する形にしました。「残り2週間を切ったら日数表示に変える」ことも後から足せます</li>
+    <li><strong>大会ページ（jstyle-cup.html）には出しません</strong> — 既に大会の話をしているページなので不要</li>
+    <li>動きを減らす設定の人にはオープニングを出しません（今の実装と同じ）</li>
+  </ul>
+</div>
+
+<p class="subtitle" style="margin-top:22px;">この内容で進めてよいか、変えたい点があればターミナルで教えてください。文言・色・オープニングの見せ方など、どこでも調整できます。</p>
