@@ -17,7 +17,83 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // --- 大会の期間限定告知バー ---
+    // 表示する期間と文言は config.js の cupPromo で管理しています。
+    // entryDeadline まで「募集中」、eventEnd まで「まもなく開催」、それ以降は非表示。
+    const cupPromo = (window.JSTYLE_CONFIG || {}).cupPromo;
+
+    // 告知バーとオープニングで共有する期間判定
+    const cupPhase = (() => {
+        if (!cupPromo) return 'none';
+        const endOfDay = (iso) => new Date(iso + 'T23:59:59');
+        const now = new Date();
+        if (now <= endOfDay(cupPromo.entryDeadline)) return 'entry';
+        if (now <= endOfDay(cupPromo.eventEnd)) return 'soon';
+        return 'none';
+    })();
+
+    const cupBar = document.getElementById('cup-bar');
+    if (cupBar) {
+        const promo = cupPromo;
+
+        let closed = false;
+        try {
+            closed = !!sessionStorage.getItem('cup-bar-closed');
+        } catch (e) {
+            // Cookie を全てブロックしている環境では sessionStorage が例外になるため無視する
+        }
+
+        const phase = closed ? 'none' : cupPhase;
+
+        if (phase !== 'none') {
+            const textEl = document.getElementById('cup-bar-text');
+            textEl.textContent = phase === 'entry' ? promo.entryText : promo.soonText;
+            cupBar.href = promo.cupUrl || 'jstyle-cup.html';
+            cupBar.classList.add(phase === 'entry' ? 'is-entry' : 'is-soon');
+            cupBar.hidden = false;
+            document.body.classList.add('has-cup-bar');
+
+            // バーの高さは文言の折り返しで変わるため、実測してCSSへ渡す
+            const syncHeight = () => {
+                document.documentElement.style.setProperty('--cup-bar-h', cupBar.offsetHeight + 'px');
+            };
+            syncHeight();
+            window.addEventListener('resize', syncHeight);
+
+            const closeBtn = document.getElementById('cup-bar-close');
+            closeBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                cupBar.hidden = true;
+                document.body.classList.remove('has-cup-bar');
+                document.documentElement.style.removeProperty('--cup-bar-h');
+                try {
+                    sessionStorage.setItem('cup-bar-closed', '1');
+                } catch (err) {
+                    // 保存できなくても表示自体は閉じる
+                }
+            });
+        }
+    }
+
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // --- オープニングの大会仕様への差し替え ---
+    // 期間中は通常のロゴ表示を隠し、大会用の文字組みを出す。canvasの演出は共通。
+    if (cupPhase !== 'none' && cupPromo && cupPromo.opening) {
+        const cupOpening = document.getElementById('opening-cup');
+        const defaultOpening = document.getElementById('opening-default');
+        if (cupOpening && defaultOpening) {
+            const t = cupPromo.opening;
+            cupOpening.querySelector('.cup-opening-label').textContent = t.label;
+            cupOpening.querySelector('.cup-opening-name-main').textContent = t.name;
+            cupOpening.querySelector('.cup-opening-name-accent').textContent = t.nameAccent || '';
+            cupOpening.querySelector('.cup-opening-date').textContent = t.date;
+            cupOpening.querySelector('.cup-opening-venue').textContent = t.venue;
+            defaultOpening.hidden = true;
+            cupOpening.hidden = false;
+        }
+    }
 
     // --- Opening Animation ---
     const openCanvas = document.getElementById('opening-canvas');
@@ -140,7 +216,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         sakuraParticles.push(new SakuraBlast(bx, by));
                     }
 
-                    const brandOverlay = document.querySelector('.branding-overlay-content');
+                    const brandOverlay = document.querySelector('.branding-overlay-content:not([hidden])');
                     if (brandOverlay) brandOverlay.classList.add('visible');
 
                     setTimeout(finishOpening, 1800);
