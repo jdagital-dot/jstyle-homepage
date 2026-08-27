@@ -20,6 +20,52 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;700;900&family=Noto+Sans+JP:wght@400;700;900&display=swap"
         rel="stylesheet">
+    <style>
+        .news-photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+            margin-bottom: 40px;
+        }
+
+        .news-photo-gallery figure {
+            margin: 0;
+            overflow: hidden;
+            border: 1px solid var(--border-subtle);
+            border-radius: 6px;
+            background: #050510;
+        }
+
+        .news-photo-gallery figure:first-child,
+        .news-photo-gallery figure:only-child {
+            grid-column: 1 / -1;
+        }
+
+        .news-photo-gallery img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .news-article-body {
+            font-size: 1.1rem;
+            line-height: 2;
+            white-space: normal;
+            overflow-wrap: anywhere;
+        }
+
+        @media (max-width: 640px) {
+            .news-photo-gallery {
+                grid-template-columns: 1fr;
+                gap: 8px;
+                margin-bottom: 32px;
+            }
+
+            .news-photo-gallery figure {
+                grid-column: 1;
+            }
+        }
+    </style>
 </head>
 
 <body class="news-detail-page">
@@ -91,6 +137,10 @@
                 .replaceAll('"', '&quot;');
         }
 
+        function renderPlainText(str) {
+            return escapeHtml(str).replace(/\r?\n/g, '<br>');
+        }
+
         async function fetchDetail() {
             // URLから ?id=xxxxx の部分を取得
             const params = new URLSearchParams(window.location.search);
@@ -126,9 +176,19 @@
             // ページタイトルとMETA情報を動的に変更（SEO対策）
             document.title = `${data.title} | J.STYLE`;
 
-            const imgHtml = data.image
-                ? `<img src="${escapeHtml(data.image.url)}" style="width:100%; border-radius:20px; margin-bottom:40px;" alt="${escapeHtml(data.title)}">`
+            const photos = Array.isArray(data.images) && data.images.length > 0
+                ? data.images
+                : data.image ? [data.image] : [];
+            const imgHtml = photos.length > 0
+                ? `<div class="news-photo-gallery">${photos.map((photo, index) => `
+                    <figure>
+                        <img src="${escapeHtml(photo.url)}"
+                            alt="${escapeHtml(photo.alt || `${data.title} ${index + 1}`)}"
+                            ${index > 0 ? 'loading="lazy"' : ''}>
+                    </figure>`).join('')}
+                </div>`
                 : '';
+            const bodyText = data.text || data.content || data.body || '内容がありません。';
 
             document.getElementById('news-content-area').innerHTML = `
                 <div class="modal-header">
@@ -136,8 +196,8 @@
                     <h1 class="modal-title" style="font-size: 2.5rem; margin: 15px 0 30px;">${escapeHtml(data.title)}</h1>
                 </div>
                 ${imgHtml}
-                <div class="modal-body" style="font-size: 1.1rem; line-height: 2;">
-                    ${data.text || data.content || data.body || '内容がありません。'}
+                <div class="modal-body news-article-body">
+                    ${renderPlainText(bodyText)}
                 </div>
             `;
 
