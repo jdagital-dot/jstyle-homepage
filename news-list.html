@@ -257,8 +257,9 @@
                 card.setAttribute('role', 'button');
                 card.setAttribute('aria-label', content.title);
 
-                const imageHtml = content.image
-                    ? `<div class="news-image"><img src="${escapeHtml(content.image.url)}" alt="${escapeHtml(content.title)}" loading="lazy" width="400" height="225"></div>`
+                const thumbnail = content.images?.[0] || content.image;
+                const imageHtml = thumbnail
+                    ? `<div class="news-image"><img src="${escapeHtml(thumbnail.url)}" alt="${escapeHtml(thumbnail.alt || content.title)}" loading="lazy" width="400" height="225"></div>`
                     : '';
 
                 card.innerHTML = `
